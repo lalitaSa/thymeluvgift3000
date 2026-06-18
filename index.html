@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For You ❤️</title>
+
+<style>
+body{
+    background:#ffe6f2;
+    font-family:sans-serif;
+    text-align:center;
+    padding-top:100px;
+}
+
+h1{
+    color:#ff4d94;
+}
+
+button{
+    padding:15px 30px;
+    border:none;
+    border-radius:20px;
+    background:#ff80bf;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🌷 Hi You 🌷</h1>
+
+<p>มีอะไรอยากบอกเธอ...</p>
+
+<button onclick="showMessage()">
+กดตรงนี้สิ 💌
+</button>
+
+<h2 id="message"></h2>
+
+<script>
+function showMessage(){
+document.getElementById("message").innerHTML =
+"ขอบคุณที่เข้ามาทำให้วันธรรมดาของเราน่ารักขึ้น 🤍";
+}
+</script>
+
+</body>
+</html>
