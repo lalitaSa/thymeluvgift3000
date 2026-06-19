@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+<title>For Thyme 🤍</title>
+
+<style>
+
+*{
+font-family: "Itim", cursive;
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:linear-gradient(180deg,#ffd6e7,#fff4f8);
+min-height:100vh;
+overflow-x:hidden;
+text-align:center;
+}
+
+.container{
+padding:40px 20px;
+}
+
+h1{
+color:#ff4d94;
+font-size:42px;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#666;
+margin-bottom:30px;
+font-size:18px;
+}
+
+.start-btn{
+background:#ff66b3;
+color:white;
+border:none;
+padding:15px 30px;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.menu{
+margin-top:30px;
+display:none;
+}
+
+.menu button{
+display:block;
+width:300px;
+margin:15px auto;
+padding:15px;
+border:none;
+border-radius:20px;
+background:white;
+color:#ff4d94;
+font-size:18px;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.page{
+display:none;
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:25px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+margin-top:20px;
+}
+
+.back-btn{
+margin-top:20px;
+padding:12px 25px;
+background:#ff80bf;
+color:white;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+#complimentText{
+font-size:24px;
+color:#ff4d94;
+margin:30px;
+font-weight:bold;
+}
+
+input{
+padding:12px;
+border-radius:15px;
+border:1px solid #ddd;
+width:220px;
+}
+
+.secretMessage{
+display:none;
+margin-top:20px;
+font-size:20px;
+line-height:1.8;
+}
+
+img{
+max-width:100%;
+border-radius:20px;
+}
+.tcas-image{
+    width:300px;
+    max-width:80%;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.tcas-image:hover{
+    transform:scale(1.05);
+}
+
+.heart{
+position:fixed;
+bottom:-50px;
+font-size:24px;
+animation:float 10s linear infinite;
+opacity:.7;
+pointer-events:none;
+}
+
+@keyframes float{
+from{
+transform:translateY(0);
+}
+to{
+transform:translateY(-120vh);
+}
+}
+
+
+.game-board{
+font-size:32px;
+line-height:1.2;
+white-space:pre;
+font-family:monospace;
+margin:20px 0;
+user-select:none;
+}
+
+.quest-box{
+background:#fff7fb;
+padding:15px;
+border-radius:15px;
+margin-top:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="home">
+
+<h1>🌷 Welcome Thyme 🌷</h1>
+
+<p class="subtitle">
+มีเวลาว่างม้ายยย ถ้าดูจบแล้วให้โอกาสชมเราว่าน่ารักได้(รึจะจีบเราก็ได้นะเราโสด) 🤍
+</p>
+
+<button class="start-btn" onclick="startWebsite()">
+✨ ลองกดดูสิเพิ่มเสียงด้วยย
+</button>
+
+<div class="menu" id="menu">
+
+<button onclick="showPage('compliments')">
+💖 khunjyde
+</button>
+
+<button onclick="showPage('secret')">
+🔐 I wish every first time was with "First Thyme" 🌷
+</button>
+
+<button onclick="showPage('surgery')">
+🩺 เตรียมตัวก่อนผ่าตัด
+</button>
+
+<button onclick="showPage('tcas')">
+📚 Plan TCAS
+</button>
+
+<button onclick="showPage('rpg')">
+🎮 Jyde's Garden Quest
+</button>
+
+</div>
+
+</div>
+
+<!-- Compliments -->
+
+<div id="compliments" class="page">
+
+<div class="card">
+
+<h2>💖 Random Compliment</h2>
+
+<div id="complimentText">
+กดปุ่มสิ 🤍
+</div>
+<br>
+<button class="start-btn" onclick="randomCompliment()">
+สุ่มๆ ค้าบ
+</button>
+
+<br>
+<br>
+<button class="back-btn" onclick="goHome()">
+กลับหน้าหลัก
+</button>
+
+</div>
+
+</div>
+
+<!-- Secret -->
+
+<div id="secret" class="page">
+
+<div class="card">
+
+<h2>🔐 Secret Room</h2>
+
+<p>ใส่รหัสผ่านก่อนน้า (วันที่เดือนเกิดเธอ + วันที่เดือนเกิดเค้า)</p>
+
+<br>
+
+<input type="password" id="password">
+
+<br><br>
+
+<button class="start-btn" onclick="checkPassword()">
+เข้า
+</button>
+
+<div id="secretMessage" class="secretMessage">
+
+💌
+
+<br><br>
+
+เค้าจะอยู่ข้างเธอเสมอ ซัพพอร์ตเธอทุ้กกรื่อง 🤍
+
+<br><br>
+
+เรามาเล่นเกม ดูหนัง ดูซีรี่ส์ ร้องเพลงให้คอแตก ทำอะไรบ้าๆ บอๆ ด้วยกันเถอะ
+
+<br>
+
+และ i luv u 3000 
+<br>
+(จำศัพท์ให้ได้ด้วยย!!!) 🌷
+
+</div>
+
+<br>
+
+<button class="back-btn" onclick="goHome()">
+กลับหน้าหลัก
+</button>
+
+</div>
+
+</div>
+
+<!-- Surgery -->
+
+<div id="surgery" class="page">
+
+<div class="card">
+
+<h2>🩺 เตรียมตัวก่อนผ่าตัด</h2>
+
+<br>
+
+🌙 พักผ่อนให้เพียงพอออ
+
+<br><br>
+
+🥗 กินอาหารครบ 5 หมู่ โดยเฉพาะโปรตีน
+
+<br><br>
+
+💧 ดื่มน้ำให้เยอะๆ น้า
+
+<br><br>
+
+⏰ อย่าลืมที่คุณหมอนัดหรือที่คุณหมอบอกนะ
+
+<br><br>
+
+✨ ไม่ว่าผลจะออกมายังไง เราจะอยู่ตรงนี้น้า
+
+<br>
+
+<button class="back-btn" onclick="goHome()">
+กลับหน้าหลัก
+</button>
+
+</div>
+
+</div>
+
+<!-- TCAS -->
+
+<div id="tcas" class="page">
+
+<div class="card">
+
+<h2>📚 Thyme TCAS Plan</h2>
+<br>
+<p>
+สำหรับคุณจี๊ดที่กำลังจะเป็นคุณจี๊ดเวอร์ชั่นสุดยอดด ✨
+</p>
+
+<br>
+
+<a href="tcas-plan.png" target="_blank">
+    <img src="tcas-plan.png" class="tcas-image">
+</a>
+
+<p style="margin-top:10px;color:#777;">
+🔍 กดที่รูปเพื่อดูขนาดเต็ม
+</p>
+
+<button class="back-btn" onclick="goHome()">
+กลับหน้าหลัก
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- RPG -->
+
+<div id="rpg" class="page">
+
+<div class="card">
+
+<h2>🎮 Jyde's Garden Quest 🌷</h2>
+
+<p>ช่วยคุณจี๊ดเก็บดอกไม้ให้ครบ 5 ดอกนะ</p>
+
+<div class="quest-box">
+<p id="flowerScore">🌷 Flowers : 0 / 5</p>
+<p>⌨️ W ⬆️ | A ⬅️ | S ⬇️ | D ➡️</p>
+</div>
+
+<div id="gameBoard" class="game-board"></div>
+<div id="gameMessage"></div>
+
+<button class="back-btn" onclick="goHome()">
+🏠 กลับหน้าหลัก
+</button>
+
+</div>
+</div>
+
+<audio id="bgm" loop>
+<source src="PUN2024.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+const compliments=[
+"เธอเก่งมาก มากที่สุดในโลกเลย 🌟",
+"เค้าพูมมจัยเหมือนเลี้ยงมาเลย 🤍",
+"วันนี้อาจจะเหนื่อยหน่อย แต่คุณจี๊ดผ่านมันไปได้แน่นอน 💙",
+"มีความรักมาส่งค้าบบบ 💌 รับมั๊ยตอบด้วย",
+"โลกใจดีกับเราที่ส่งเธอมา 🌷",
+"🌸วันนี้ดื่มน้ำด้วย กินข้าวด้วย และคิดถึงเค้าด้วยนะ🌸",
+"เรามาผ่านทุกเรื่องไปด้วยกันเถอะ 🫶",
+"กอดผ่านข้อความนะ 🫂",
+"ใครใจร้ายกับเธอบอกเค้าได้เลย เดะจัดการให้",
+"First Thyme, first in my heart 💖",
+];
+
+function startWebsite(){
+
+document.getElementById("bgm").play();
+
+document.getElementById("menu").style.display="block";
+
+}
+
+function showPage(page){
+
+document.getElementById("home").style.display="none";
+
+document.querySelectorAll(".page").forEach(p=>{
+p.style.display="none";
+});
+
+document.getElementById(page).style.display="block";
+
+}
+
+function goHome(){
+
+document.querySelectorAll(".page").forEach(p=>{
+p.style.display="none";
+});
+
+document.getElementById("home").style.display="block";
+
+}
+
+function randomCompliment(){
+
+document.getElementById("complimentText").innerHTML=
+compliments[Math.floor(Math.random()*compliments.length)];
+
+}
+
+function checkPassword(){
+
+if(document.getElementById("password").value=="4311"){
+
+document.getElementById("secretMessage").style.display="block";
+
+}else{
+
+alert("Opps! How do you not know that? You're supposed to know everything! 🤭💕");
+
+}
+
+}
+
+
+let playerX = 1;
+let playerY = 1;
+let score = 0;
+
+const flowers = [
+{x:3,y:1},
+{x:5,y:2},
+{x:2,y:4},
+{x:6,y:5},
+{x:1,y:6}
+];
+
+function drawGame(){
+let board="";
+for(let y=0;y<8;y++){
+for(let x=0;x<8;x++){
+if(x===playerX && y===playerY){
+board+="🧑";
+}else{
+let flowerFound=false;
+flowers.forEach(f=>{
+if(f.x===x && f.y===y){
+board+="🌷";
+flowerFound=true;
+}
+});
+if(!flowerFound){ board+="🟩"; }
+}
+}
+board+="\n";
+}
+const boardDiv=document.getElementById("gameBoard");
+if(boardDiv){ boardDiv.innerText=board; }
+}
+
+function checkFlower(){
+for(let i=0;i<flowers.length;i++){
+if(flowers[i].x===playerX && flowers[i].y===playerY){
+flowers.splice(i,1);
+score++;
+document.getElementById("flowerScore").innerHTML="🌷 Flowers : "+score+" / 5";
+if(score===5){
+document.getElementById("gameMessage").innerHTML="<h3>🏆 Achievement Unlocked</h3><p>คุณจี๊ดเก็บดอกไม้ครบแล้ว 🌷</p><p>💌 ลองไปเปิดห้องลับดูสิ</p>";
+}
+break;
+}
+}
+}
+
+document.addEventListener("keydown",function(e){
+if(document.getElementById("rpg").style.display!=="block"){ return; }
+
+if((e.key==="w"||e.key==="W")&&playerY>0) playerY--;
+if((e.key==="s"||e.key==="S")&&playerY<7) playerY++;
+if((e.key==="a"||e.key==="A")&&playerX>0) playerX--;
+if((e.key==="d"||e.key==="D")&&playerX<7) playerX++;
+
+checkFlower();
+drawGame();
+});
+
+drawGame();
+
+
+for(let i=0;i<20;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="🤍";
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.animationDuration=
+(6+Math.random()*8)+"s";
+
+document.body.appendChild(heart);
+
+}
+
+</script>
+
+</body>
+</html>
