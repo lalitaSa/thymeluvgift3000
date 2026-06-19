@@ -378,6 +378,15 @@ margin-top:15px;
 
 <div id="gameBoard" class="game-board"></div>
 <div id="gameMessage"></div>
+<div id="cuteMessage"
+style="
+margin-top:15px;
+font-size:18px;
+color:#ff4d94;
+font-weight:bold;
+">
+</div>
+
 
 <button class="back-btn" onclick="goHome()">
 🏠 กลับหน้าหลัก
@@ -462,11 +471,20 @@ let playerY = 1;
 let score = 0;
 
 const flowers = [
-{x:3,y:1},
-{x:5,y:2},
-{x:2,y:4},
-{x:6,y:5},
-{x:1,y:6}
+{x:3,y:1,msg:"วันนี้เก่งมากแล้วนะ 🤍"},
+{x:5,y:2,msg:"อย่าลืมกินข้าวด้วยน้า 🍙"},
+{x:2,y:4,msg:"ให้ทายว่าใครคิดถึงเธออยู่ 👀"},
+{x:6,y:5,msg:"อ่านหนังสือต้องพักบ้างน้า 🌷"},
+{x:1,y:6,msg:"พูมจัยเหมือนเลี้ยงมาเลย 💖"}
+];
+
+const trees = [
+{x:2,y:1},
+{x:2,y:2},
+{x:2,y:3},
+{x:5,y:4},
+{x:6,y:4},
+{x:4,y:6}
 ];
 
 function drawGame(){
@@ -483,7 +501,21 @@ board+="🌷";
 flowerFound=true;
 }
 });
-if(!flowerFound){ board+="🟩"; }
+let treeFound=false;
+
+trees.forEach(t=>{
+
+if(t.x===x && t.y===y){
+board+="🌳";
+treeFound=true;
+}
+
+});
+
+if(!flowerFound && !treeFound){
+board+="🟩";
+}
+
 }
 }
 board+="\n";
@@ -492,9 +524,33 @@ const boardDiv=document.getElementById("gameBoard");
 if(boardDiv){ boardDiv.innerText=board; }
 }
 
+let hitTree=false;
+
+trees.forEach(t=>{
+
+if(t.x===playerX && t.y===playerY){
+hitTree=true;
+}
+
+});
+
+if(hitTree){
+
+if((e.key==="w" || e.key==="W")) playerY++;
+if((e.key==="s" || e.key==="S")) playerY--;
+if((e.key==="a" || e.key==="A")) playerX++;
+if((e.key==="d" || e.key==="D")) playerX--;
+
+return;
+
+}
 function checkFlower(){
 for(let i=0;i<flowers.length;i++){
 if(flowers[i].x===playerX && flowers[i].y===playerY){
+document.getElementById("cuteMessage")
+.innerHTML =
+flowers[i].msg;
+
 flowers.splice(i,1);
 score++;
 document.getElementById("flowerScore").innerHTML="🌷 Flowers : "+score+" / 5";
