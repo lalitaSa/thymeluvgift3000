@@ -369,7 +369,7 @@ margin-top:15px;
 
 <h2>🎮 Jyde's Garden Quest 🌷</h2>
 
-<p>ช่วยคุณจี๊ดเก็บดอกไม้ให้ครบ 5 ดอกนะ</p>
+<p>คุณจี๊ดเก็บดอกไม้ให้ครบเร็วว</p>
 
 <div class="quest-box">
 <p id="flowerScore">🌷 Flowers : 0 / 5</p>
@@ -382,7 +382,37 @@ margin-top:15px;
 <button class="back-btn" onclick="goHome()">
 🏠 กลับหน้าหลัก
 </button>
+    
+<div id="popup"
+style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 0 30px rgba(0,0,0,.2);
+z-index:9999;
+max-width:400px;
+">
 
+<h2>🏆 Achievement Unlocked</h2>
+
+<p>
+🌷 Flower Collector
+</p>
+
+<p>
+คุณจี๊ดเก็บดอกไม้ครบแล้ว
+</p>
+
+<button onclick="openLetter()">
+💌 เปิดข้อความ
+</button>
+
+</div>
 </div>
 </div>
 
@@ -504,6 +534,29 @@ const boardDiv=document.getElementById("gameBoard");
 if(boardDiv){ boardDiv.innerText=board; }
 }
 
+function openLetter(){
+
+document.getElementById("popup").innerHTML=
+`
+<h2>💌</h2>
+
+<p>
+ไม่ว่าจะเป็นเรื่องผ่าตัด
+เรื่องสอบ
+หรือวันที่เหนื่อยมาก ๆ
+
+เค้าภูมิใจในตัวเธอเสมอนะ 🤍
+</p>
+
+<button onclick="
+document.getElementById('popup').style.display='none'
+">
+ปิด
+</button>
+`;
+
+}
+    
 function checkFlower(){
 
 for(let i=0;i<flowers.length;i++){
@@ -522,8 +575,7 @@ document.getElementById("flowerScore").innerHTML =
 
 if(score===5){
 
-document.getElementById("gameMessage").innerHTML =
-"<h3>🏆 Achievement Unlocked</h3><p>คุณจี๊ดเก็บดอกไม้ครบแล้ว 🌷</p><p>💌 ลองไปเปิดห้องลับดูสิ</p>";
+document.getElementById("popup").style.display="block";
 
 }
 
