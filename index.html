@@ -210,6 +210,10 @@ margin-top:15px;
 🎮 Jyde's Garden Quest
 </button>
 
+<button onclick="showPage('lovequiz');startQuiz();">
+💖 How Much Does Babe Love Me?
+</button>
+
 </div>
 
 </div>
@@ -416,6 +420,19 @@ max-width:400px;
 </div>
 </div>
 
+
+<!-- LOVE QUIZ -->
+<div id="lovequiz" class="page">
+<div class="card">
+<h2>💖 How Much Does Babe Love Me?</h2>
+<p id="question">Question 1</p>
+<br>
+<div id="answers"></div>
+<br>
+<button class="back-btn" onclick="goHome()">🏠 กลับหน้าหลัก</button>
+</div>
+</div>
+
 <audio id="bgm" loop>
 <source src="PUN2024.mp3" type="audio/mpeg">
 </audio>
@@ -614,6 +631,46 @@ drawGame();
 });
 
 drawGame();
+
+
+const quiz=[
+{question:"What is the first thing I usually do when I miss you?",answers:["Sleeping","Playing games","Text you","Watching YouTube"],correct:2},
+{question:"What makes me happiest?",answers:["Expensive gifts","Spending time with you","Sleeping all day","Shopping"],correct:1},
+{question:"What should you do when you're having a hard day?",answers:["Keep everything to yourself","Pretend you're okay","Let me support you","Panic"],correct:2},
+{question:"Which achievement would make me proudest?",answers:["Getting rich","Winning every game","Seeing you reach your goals","Becoming famous"],correct:2},
+{question:"How much does Babe love me?",answers:["A little","A lot","More than yesterday","Infinity ♾️"],correct:3}
+];
+
+let currentQuestion=0;
+
+function startQuiz(){
+currentQuestion=0;
+loadQuestion();
+}
+
+function loadQuestion(){
+document.getElementById("question").innerHTML=quiz[currentQuestion].question;
+let qhtml='';
+quiz[currentQuestion].answers.forEach((a,i)=>{
+qhtml += `<button class="start-btn" onclick="checkAnswer(${i})">${a}</button><br><br>`;
+});
+document.getElementById("answers").innerHTML=qhtml;
+}
+
+function checkAnswer(ans){
+if(ans===quiz[currentQuestion].correct){
+currentQuestion++;
+if(currentQuestion>=quiz.length){
+document.getElementById("question").innerHTML=`🏆 CONGRATULATIONS!<br><br>💖 Love Test Completed 💖<br><br>Result: 100%<br><br>🌷 Unlimited Hugs<br>🤍 Unlimited Support<br>✨ One Proud Thyme`;
+document.getElementById("answers").innerHTML="";
+return;
+}
+loadQuestion();
+}else{
+alert("😿 Wrong Answer!\n\nMaybe Babe needs to know me a little better 💖");
+}
+}
+
 
 for(let i=0;i<20;i++){
 
