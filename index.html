@@ -169,14 +169,78 @@ border-radius:15px;
 margin-top:15px;
 }
 
+
+#introPage{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+.gameboy-card{
+background:#fff8dd;
+width:380px;
+padding:25px;
+border-radius:35px;
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+.screen{
+background:#eaf4ff;
+padding:15px;
+border-radius:25px;
+border:4px solid #f3c8d9;
+text-align:center;
+}
+.intro-image{
+width:100%;
+height:350px;
+object-fit:cover;
+border-radius:15px;
+}
+.controls{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:25px;
+}
+.plus-btn{
+width:90px;height:90px;border-radius:50%;
+background:#ffd7ea;display:flex;justify-content:center;align-items:center;
+font-size:50px;color:#ff69a8;
+}
+.right-buttons{display:flex;flex-direction:column;gap:15px;}
+.paw-btn,.heart-btn{
+width:60px;height:60px;border-radius:50%;
+background:#ffd7ea;display:flex;justify-content:center;align-items:center;
+font-size:25px;
+}
+
 </style>
 </head>
 
 <body>
 
+
+<div id="introPage">
+<div class="gameboy-card">
+<div class="screen">
+<img src="2.jpg" class="intro-image">
+<h2 style="margin-top:15px;color:#ff69a8;">How Much Does Babe Love Me? 💖</h2>
+<button class="start-btn" onclick="startWebsite()">🎮 Game Start</button>
+</div>
+<div class="controls">
+<div class="plus-btn">+</div>
+<div class="right-buttons">
+<div class="paw-btn">🐾</div>
+<div class="heart-btn">💗</div>
+</div>
+</div>
+</div>
+</div>
+
 <div class="container">
 
-<div id="home">
+<div id="home" style="display:none;">
 
 <h1>🌷 Welcome Thyme 🌷</h1>
 
@@ -453,6 +517,9 @@ const compliments=[
 ];
 
 function startWebsite(){
+
+document.getElementById("introPage").style.display="none";
+document.getElementById("home").style.display="block";
 
 document.getElementById("bgm").play();
 
