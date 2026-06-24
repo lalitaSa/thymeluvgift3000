@@ -396,7 +396,8 @@ ${q.passage || q.question}
 <label>
 <input type="radio" name="q${q.id}" value="A">
 ${q.choices[0]}
-</label><br>
+</label>
+<br>
 
 <label>
 <input type="radio" name="q${q.id}" value="B">
@@ -413,6 +414,16 @@ ${q.choices[2]}
 ${q.choices[3]}
 </label>
 
+</label>
+
+<div id="review${q.id}" style="
+margin-top:10px;
+padding:8px;
+background:#fff5f9;
+border-radius:8px;
+display:none;
+"></div>
+
 </div>
 `;
 }
@@ -425,7 +436,7 @@ document.getElementById("quiz").innerHTML=html;
 function grade(start,end){
 
 let score=0;
-let review="";
+
 
 for(let i=start;i<=end;i++){
 
@@ -436,18 +447,19 @@ let q = questions.find(x => x.id === i);
 
 if(user===q.answer) score++;
 
-review+=`
-<div>
-ข้อ ${i}
-${user===q.answer ? "✅" : "❌"}
-ตอบ ${user}
-| เฉลย ${q.answer}
-</div>
+document.getElementById(`review${i}`).style.display = "block";
+
+document.getElementById(`review${i}`).innerHTML = `
+${user===q.answer ? "✅ ถูกต้อง" : "❌ ไม่ถูกต้อง"}
+<br>
+Your Answer: ${user}
+<br>
+Correct Answer: ${q.answer}
 `;
 }
 
 document.getElementById("result").innerHTML=
-`<h2>คะแนน ${score}/20</h2>`+review;
+`<h2>🎉 คะแนน ${score}/20</h2>`;
 }
 </script>
 
