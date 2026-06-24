@@ -139,13 +139,42 @@ answer:"D"
 },
 {
 id:11,
-question:"Pete: ________. We haven't seen each other for months.",
+
+passage:`
+Conversation 1
+
+Joe:
+Hello Pete, how have you been?
+Long time no see!
+
+Pete:
+_______(11)_______
+We haven't seen each other for months.
+How have you been?
+
+Joe:
+I have an important event to organize next week.
+That has kept me very busy _______(12)_______?
+
+Pete:
+Oh! I just finished a meeting with an important client.
+Now I have some free time.
+
+Joe:
+Good for you.
+_______(13)_______ catch up with each other sometime after next week?
+
+Pete:
+Sure.
+_______(14)_______ when you have finished your project.
+`,
+
 choices:[
 "It's been a long day!",
 "It's a matter of luck!",
 "What a surprise!",
 "Time's up!"
-],
+]
 answer:"C"
 },
 {
@@ -336,7 +365,15 @@ html += `
 
 <b>Question ${q.id}</b><br><br>
 
-${q.question}<br><br>
+<pre style="
+white-space:pre-wrap;
+font-family:inherit;
+background:#f8f8f8;
+padding:10px;
+border-radius:10px;
+">
+${q.passage || q.question}
+</pre><br>
 
 <label>
 <input type="radio" name="q${q.id}" value="A">
