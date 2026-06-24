@@ -272,12 +272,14 @@ font-size:24px;
 📚 Plan TCAS
 </button>
 
-<button onclick="showPage('rpg')">
-🎮 Jyde's Garden Quest
-</button>
+
 
 <button onclick="showPage('lovequiz');startQuiz();">
 💖 How Much Does Babe Love Me?
+</button>
+
+<button onclick="window.location.href='tgat.html'">
+📝 Mock Test TGAT
 </button>
 
 </div>
@@ -428,62 +430,6 @@ font-size:24px;
 
 </div>
 
-</div>
-
-
-<!-- RPG -->
-
-<div id="rpg" class="page">
-
-<div class="card">
-
-<h2>🎮 Jyde's Garden Quest 🌷</h2>
-
-<p>คุณจี๊ดเก็บดอกไม้ให้ครบเร็วว</p>
-
-<div class="quest-box">
-<p id="flowerScore">🌷 Flowers : 0 / 5</p>
-<p>⌨️ W ⬆️ | A ⬅️ | S ⬇️ | D ➡️</p>
-</div>
-
-<div id="gameBoard" class="game-board"></div>
-<div id="gameMessage"></div><div id="cuteMessage" style="margin-top:15px;font-size:18px;color:#ff4d94;font-weight:bold;"></div>
-
-<button class="back-btn" onclick="goHome()">
-🏠 กลับหน้าหลัก
-</button>
-    
-<div id="popup"
-style="
-display:none;
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-padding:30px;
-border-radius:25px;
-box-shadow:0 0 30px rgba(0,0,0,.2);
-z-index:9999;
-max-width:400px;
-">
-
-<h2>🏆 Achievement Unlocked</h2>
-
-<p>
-🌷 Flower Collector
-</p>
-
-<p>
-คุณจี๊ดเก็บดอกไม้ครบแล้ว
-</p>
-
-<button onclick="openLetter()">
-💌 เปิดข้อความ
-</button>
-
-</div>
-</div>
 </div>
 
 
@@ -783,3 +729,4 @@ document.body.appendChild(heart);
 
 </body>
 </html>
+
