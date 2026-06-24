@@ -174,7 +174,7 @@ choices:[
 "It's a matter of luck!",
 "What a surprise!",
 "Time's up!"
-]
+],
 answer:"C"
 },
 {
@@ -414,14 +414,16 @@ for(let i=start;i<=end;i++){
 let selected=document.querySelector(`input[name=q${i}]:checked`);
 let user=selected ? selected.value : "-";
 
-if(user===answers[i]) score++;
+let q = questions.find(x => x.id === i);
+
+if(user===q.answer) score++;
 
 review+=`
 <div>
 ข้อ ${i}
-${user===answers[i]?"✅":"❌"}
+${user===q.answer ? "✅" : "❌"}
 ตอบ ${user}
-| เฉลย ${answers[i]}
+| เฉลย ${q.answer}
 </div>
 `;
 }
