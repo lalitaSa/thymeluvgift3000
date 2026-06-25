@@ -12,10 +12,8 @@ button{padding:12px 20px;border:none;border-radius:12px;background:#ff66b3;color
 </head>
 <body>
 <div class="card">
-<h1>📝 Mock Test TGAT English ปี 68</h1>
-<p>เลือกชุดข้อสอบ</p>
-<button onclick="loadSet(1)">Set 1 (1-30)</button>
-<button onclick="loadSet(2)">Set 2 (31-60)</button>
+<h1>📝 Mock Test TGAT English ปี 66</h1>
+
 
 
 <br><br>
@@ -23,6 +21,15 @@ button{padding:12px 20px;border:none;border-radius:12px;background:#ff66b3;color
 
 <div id="quiz"></div>
 <div id="result"></div>
+<hr>
+
+<h3>📊 ประวัติการทำข้อสอบ</h3>
+
+<div id="history"></div>
+
+<button onclick="clearHistory()">
+🗑 ล้างประวัติ
+</button>
 </div>
 <script>
 
@@ -867,9 +874,9 @@ answer:"C"
 ];
 
 
-function loadSet(set){
-let start=(set-1)*30+1;
-let end=start+29;
+function loadQuiz(){
+let start=1;
+let end=60;
 
 let html="";
 
@@ -929,12 +936,12 @@ display:none;
 `;
 }
 
-html+=`<button onclick="grade(${start},${end})">Submit</button>`;
+html+=`<button onclick="grade()">Submit</button>`;
 
 document.getElementById("quiz").innerHTML=html;
 }
 
-function grade(start,end){
+function grade(){
 
 let score=0;
 
@@ -959,9 +966,86 @@ Correct Answer: ${q.answer}
 `;
 }
 
-document.getElementById("result").innerHTML=
-`<h2>🎉 คะแนน ${score}/20</h2>`;
+let total = end - start + 1;
+
+document.getElementById("result").innerHTML =
+`<h2>🎉 คะแนน ${score}/${total}</h2>`;
+
+// บันทึกคะแนน
+saveHistory(score,total);
+
+// โหลดประวัติใหม่
+showHistory();
 }
+
+function saveHistory(score,total){
+
+let history =
+JSON.parse(localStorage.getItem("tgatHistory")) || [];
+
+history.unshift({
+date:new Date().toLocaleString("th-TH"),
+score:score,
+total:total
+});
+
+localStorage.setItem(
+"tgatHistory",
+JSON.stringify(history)
+);
+
+}
+
+function showHistory(){
+
+let history =
+JSON.parse(localStorage.getItem("tgatHistory")) || [];
+
+let html = "";
+
+history.forEach((item,index)=>{
+
+html += `
+<div style="
+padding:10px;
+margin:8px 0;
+background:#fff5f9;
+border-radius:10px;
+">
+
+<b>ครั้งที่ ${history.length-index}</b>
+
+<br>
+
+📅 ${item.date}
+
+<br>
+
+🎯 ${item.score}/${item.total}
+
+</div>
+`;
+
+});
+
+document.getElementById("history").innerHTML = html;
+
+}
+
+function clearHistory(){
+
+if(confirm("ลบประวัติทั้งหมด?")){
+
+localStorage.removeItem("tgatHistory");
+
+showHistory();
+
+}
+showHistory();
+}
+
+loadQuiz();
+showHistory();
 </script>
 
 </body>
