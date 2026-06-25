@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock TGAT</title>
+<style>
+body{font-family:Arial,sans-serif;background:#ffd6e7;padding:20px}
+.card{background:white;max-width:900px;margin:auto;padding:20px;border-radius:20px}
+button{padding:12px 20px;border:none;border-radius:12px;background:#ff66b3;color:white;cursor:pointer;margin:5px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>📝 Mock Test TGAT English ปี 68</h1>
+<p>เลือกชุดข้อสอบ</p>
+<button onclick="loadSet(1)">Set 1 (1-30)</button>
+<button onclick="loadSet(2)">Set 2 (31-60)</button>
+
+
+<br><br>
+<button onclick="window.location.href='index.html'">🏠 กลับหน้าหลัก</button>
+
+<div id="quiz"></div>
+<div id="result"></div>
+</div>
+<script>
+
+const questions = [
+{
+id:1,
+question:"Q: What are your hours?",
+choices:[
+"She’s usually around till late afternoon.",
+"The manager sets them week by week.",
+"We’re open 10 to 4 most days.",
+"The clock here runs a bit fast."
+],
+answer:"C"
+},
+{
+id:2,
+question:"Do you mind if I sit here?",
+choices:[
+"I usually take the window.",
+"Not sure where the others ended up.",
+"This corner gets a bit drafty.",
+"No, go ahead"
+],
+answer:"D"
+},
+{
+id:3,
+question:"Is this the end of the line?",
+choices:[
+"Not quite. It continues past the stairs.",
+"The cashier’s over there.",
+"I just walked in myself.",
+"They open at six."
+],
+answer:"A"
+},
+{
+id:4,
+question:"How often do you exercise?",
+choices:[
+"the weather permits me.",
+"I forgot my gym pass today.",
+"I’d rather watch than play.",
+"Once in a while."
+],
+answer:"D"
+},
+{
+id:5,
+question:"How come you prefer shopping online?",
+choices:[
+"Quite a few people reach out to me online.",
+"Offline shops have slowed down lately.",
+"A lot of people get into it as a hobby.",
+"You can pick up better deals online."
+],
+answer:"D"
+},
+{
+id:6,
+question:"What’s your take on the presentation?",
+choices:[
+"You would get the hang of it",
+"Nicely structured and to the point.",
+"I do presentations myself sometimes.",
+"You yourself are an interesting take."
+],
+answer:"B"
+},
+{
+id:7,
+passage:`
+Q: So you’re quitting your job?
+R: .................................... I never said that!
+`,
+choices:[
+"What are you up to this",
+"Why aren’t it the same",
+"What are you on about?",
+"How is it over that"
+],
+answer:"C"
+},
+{
+id:8,
+question:"How long have you been in Japan?",
+choices:[
+"For nothing over 10 days",
+"About ten days now.",
+"Loving it here so far.",
+"I’m staying near the station."
+],
+answer:"B"
+},
+{
+id:9,
+question:"Does the bus go to the city centre?",
+choices:[
+"There’s a taxi rank by the gate.",
+"I haven’t checked the board yet.",
+"Yes, straight to Town Hall.",
+"I came on the metro."
+],
+answer:"C"
+},
+{
+id:10,
+question:"Have you planned where to go on your holiday yet?",
+choices:[
+"I haven’t started packing.",
+"Last trip was in May.",
+"Not really, work got in the way.",
+"I probably have."
+],
+answer:"C"
+},
+{
+id:11,
+
+passage:`
+Short Conversation (15 ข้อ)
+Conversation 1
+Olivia: You look like you’ve been through a lot. Everything okay?
+Jacob: ______(11)_____. I pulled an all-nighter again, and my brain’s basically fried at this
+point.
+Olivia: Oh, that explains it. Still, don’t let _____(12)_____ get the best of you. You’ve handled
+worse before.
+Jacob: I know… but lately it feels like everything’s piling up.
+Olivia: I get that. But honestly, you always manage to ____(13)___, no matter how hard it is.
+Jacob: Thanks. Seriously, that means a lot to me.
+Olivia: _____(14)_____. You’d do the same for me.
+`,
+
+choices:[
+"I overslept this morning",
+"I’m so worn out.",
+"I actually feel great",
+"I just got back from vacation"
+],
+answer:"B"
+},
+{
+id:12,
+question:"",
+choices:[
+"your deadlines",
+"the noise",
+"the stress",
+"the group"
+],
+answer:"C"
+},
+{
+id:13,
+question:"",
+choices:[
+"break down",
+"turn away",
+"bounce back",
+"space out"
+],
+answer:"C"
+},
+{
+id:14,
+question:"",
+choices:[
+"I’d rather not",
+"Anytime",
+"You owe me one",
+"Nothing doing."
+],
+answer:"B"
+},
+{
+id:15,
+passage:`
+Conversation 2
+Doctor: You don’t look too well today. ____(15)____
+Patient: Since the weekend. I thought it was just a cold, but it’s gotten a lot worse.
+Doctor: I see. Have you had any chills or muscle aches?
+Patient: Yes, both. Plus, my fever’s been on and off, and I can barely get through the
+day.
+Doctor: Alright, let’s do a quick check. _____(16)____, and tilt your head back slightly.
+Patient: Okay.
+Doctor: Hmm, your throat’s quite inflamed, and your temperature’s spiking. It’s likely
+influenza A, but we’ll run a test to be sure. _____(17)_____, and someone will
+assist you.
+`,
+choices:[
+"How long have you been feeling like this?",
+"When was your last check-up?",
+"Did you drive yourself here today?",
+"Are you planning anytime soon?"
+],
+answer:"A"
+},
+{
+id:16,
+question:"",
+choices:[
+"Take a deep breath through your mouth",
+"Sit tight while I grab the results",
+"Step outside for a moment",
+"Lower your mask and open wide"
+],
+answer:"D"
+},
+{
+id:17,
+question:"",
+choices:[
+"Head to the testing station down the hall",
+"Go grab some lunch and come back later",
+"Tell the nurse your favorite series",
+"Please proceed to the pharmacy counter"
+],
+answer:"A"
+},
+{
+id:18,
+passage:`
+Conversation 3
+Nora:. _____(18)____?
+Leo: I’m from Florence, Italy. I was actually born just outside the city, but I’ve lived there
+all my life. How about you?
+Nora: I grew up in Toronto, though I’ve been based in Berlin for a couple of years now.
+Leo: Oh, wow. I’ve never made it to Canada, but _____(19)____.
+Nora: You totally should. It’s a beautiful country.
+Leo: I’d love to. If you ever come to Italy, _____(20)_____.
+`,
+choices:[
+"Where are you originally from",
+"When did you get here",
+"How’s the trip so far",
+"Did you sleep well last night"
+],
+answer:"A"
+},
+{
+id:19,
+question:"",
+choices:[
+"I’m honestly not a big fan of cold weather",
+"It’s been on my travel list forever",
+"I can barely picture where that is",
+"I used to live there when I was little"
+],
+answer:"B"
+},
+{
+id:20,
+question:"",
+choices:[
+"I’ll make sure to write you a letter",
+"I’ll happily show you around",
+"I’ll think about it if I have time",
+"I’ll probably be too busy"
+],
+answer:"B"
+},
+{
+id:21,
+passage:`
+Short Conversation (10 ข้อ)
+Conversation 1
+Passenger: Hi, I just got in from Toronto, but my connection to Frankfurt has already
+departed. The inbound flight was delayed for over two hours, and by the
+time we landed, the gate had closed.
+Staff: I see. _____(21)_____
+Passenger: Yes, I headed straight there, but immigration was backed up and there was
+no way I could’ve made it in time.
+Staff: That happens sometimes with tight layovers. Unfortunately, ____(22)____, so
+we’ll need to get you re-routed manually.
+Passenger: That’s stressful… I’ve got a client presentation tomorrow morning. ____(23)____
+would honestly save me right now.
+Staff: I completely understand. For the moment, _____(24)_____. They’ll check
+alternative routes and, if necessary, arrange accommodation.
+Passenger: Thanks. How will I find out once my new itinerary’s confirmed?
+Staff: ______(25)_____. You’ll also get an email notification as soon as the change
+goes through.
+`,
+choices:[
+"Did you try heading straight to the gate after landing?",
+"Did you pick up your bags before clearing customs?",
+"Were you seated near the emergency exit?",
+"Did you upgrade to priority boarding?"
+],
+answer:"A"
+},
+{
+id:22,
+question:"",
+choices:[
+"flights usually wait for late passengers",
+"that won’t happen if you ran late",
+"the system doesn’t automatically protect missed international connections",
+"you can just board the next flight without checking in"
+],
+answer:"C"
+},
+{
+id:23,
+question:"",
+choices:[
+"A lounge pass",
+"An earlier flight to get me there tonight",
+"A compensation voucher",
+"A seat upgrade"
+],
+answer:"B"
+},
+{
+id:24,
+question:"",
+choices:[
+"Wait by the carousel until further notice",
+"Head to the nearest immigration office",
+"Go over to the service desk down the concourse",
+"Don’t check the departures board every ten minutes."
+],
+answer:"C"
+},
+{
+id:25,
+question:"",
+choices:[
+"We’ll make a PA announcement as soon as it’s locked in",
+"You’ll have to keep checking manually",
+"Someone from immigration will tell you",
+"You can sleep on it now"
+],
+answer:"A"
+},
+{
+id:26,
+passage:`
+Conversation 2
+Daughter : Mom, can we talk? I got my grades back today… and they’re lower
+than last semester.
+Mother : Oh sweetheart, I can see how much this is bothering you. _____(26)____
+Daughter : I just don’t understand. I worked so hard, but it feels like all that effort
+didn’t pay off.
+Mother : I get it. It’s disappointing when results don’t match your effort. But
+remember, ____(27)____. One rough semester doesn’t define who you
+are.
+Daughter : It still hurts, though. Everyone else seems to be doing better, and I
+feel like I let you down.
+Mother : You didn’t let me down at all. ______(28)______ I’ve seen how much
+you’ve pushed yourself this time, and I’m proud of that.
+Daughter : Thanks, Mom. I guess I just need to figure out what to do differently
+next time.
+Mother : Exactly. Dwelling on it won’t help. _____(29)____
+Daughter : That sounds like a good idea. I want to get back on track, not stay
+stuck here.
+Mother : And don’t forget that ______(30)______. You’ve got so many strengths
+beyond grades.
+`,
+choices:[
+"Do you want to tell me what happened?",
+"Are you sure the teacher graded correctly?",
+"Maybe you just didn’t focus enough.",
+"Should we check your friends’ scores?"
+],
+answer:"A"
+},
+{
+id:27,
+question:"",
+choices:[
+"The motivation will come on its own.",
+"Maybe the teacher didn’t teach it well.",
+"One semester’s grades don’t show everything.",
+"Exam results show how you did throughout the term."
+],
+answer:"C"
+},
+{
+id:28,
+question:"",
+choices:[
+"You’ve made real progress in how you handle challenges.",
+"Next time, don’t make the same mistakes.",
+"Maybe this subject isn’t right for you.",
+"You should be more competitive."
+],
+answer:"A"
+},
+{
+id:29,
+question:"",
+choices:[
+"You need to think this through more.",
+"How about setting clear goals for the next term?",
+"Let’s focus on what already happened.",
+"The teacher must come to terms with it."
+],
+answer:"B"
+},
+{
+id:30,
+question:"",
+choices:[
+"I’ll always be proud of you no matter what.",
+"You need to speak up more in class.",
+"Sometimes grades really do matter.",
+"Grades aren’t everything, but they’re still disappointing."
+],
+answer:"A"
+},
+{
+id:31,
+passage:`
+Cloze Test (15 ข้อ)
+Passage 1 (Items 31–38)
+For many students, Gemini has rapidly turned into an indispensable study partner,
+transforming how they approach learning, (31). It’s remarkable how quickly this shift has
+taken place. Only a few years ago, learners (32) physical libraries for research, but today
+most are comfortable relying on AI assistance instead.
+Gemini can generate examples, clarify complex concepts, and summarize large amounts of
+information within seconds. While this convenience is appealing, educators have voiced
+concerns. Excessive reliance on the platform may cause certain skills (33) over time.
+Students who (34) the tool too heavily often realize—sometimes too late—that they
+struggle to solve problems (35) their own when it’s unavailable.
+There have also been debates regarding (36) in the platform’s responses. Different users
+occasionally receive conflicting explanations, raising questions about its reliability. (37),
+experts suggest that Gemini should supplement students’ learning rather than replace it.
+By questioning sources, evaluating information critically, and continuing to (38), learners
+can benefit from AI tools without losing their intellectual independence.
+`,
+choices:[
+"hasn’t it",
+"doesn’t it",
+"isn’t it",
+"didn’t it"
+],
+answer:"A"
+},
+{
+id:32,
+question:"",
+choices:[
+"used to frequent",
+"are used to being frequent",
+"were used to frequented",
+"had used to frequent"
+],
+answer:"A"
+},
+{
+id:33,
+question:"",
+choices:[
+"to deteriorate",
+"deteriorating",
+"deteriorates",
+"to deteriorated"
+],
+answer:"A"
+},
+{
+id:34,
+question:"",
+choices:[
+"depend on",
+"result from",
+"turn into",
+"come across"
+],
+answer:"A"
+},
+{
+id:35,
+question:"",
+choices:[
+"by",
+"on",
+"with",
+"for"
+],
+answer:"B"
+},
+{
+id:36,
+question:"",
+choices:[
+"its consistency",
+"it’s consistency",
+"its consisting",
+"it’s consistencies"
+],
+answer:"A"
+},
+{
+id:37,
+question:"",
+choices:[
+"For this reason",
+"On the contrary",
+"At the same time",
+"Granted"
+],
+answer:"A"
+},
+{
+id:38,
+question:"",
+choices:[
+"sharpen their thinking skills",
+"make up their skills",
+"enhance critically",
+"be think carefully"
+],
+answer:"A"
+},
+{
+id:39,
+passage:`
+Passage 2 (Items 39-45)
+The _____(39)____ of precision gene-editing technology like CRISPR-Cas9, which acts like a
+molecular scalpel ____(40)____ it can swap even single letters of DNA, has made a world of
+chimeric species ____(41)____. For some, splicing the DNA of extinct megafauna like dire
+wolves and mammoth into grey wolves or Asian elephants _____(42)_____ an opportunity to
+resurrect a long-vanished world. But with synthetic biology we could potentially save the
+world of the present, intervening in the evolution of vulnerable species ____(43)____ they
+can survive changing climates and collapsing ecosystems. Plants could be edited to cope
+with drought, or to improve photosynthesis in crops. Microbes could be programmed to
+sense pollution and consume toxins, ___(44)___ the marine plastic that gluts the digestive
+tracts of seabirds. With assisted evolution, we might _____(45)_____ coral reef systems from
+collapse.`,
+choices:[
+"emerges",
+"emerge",
+"emergency",
+"emergence"
+],
+answer:"D"
+},
+{
+id:40,
+question:"",
+choices:[
+"such a fine",
+"so finely",
+"so fine",
+"such fine that"
+],
+answer:"C"
+},
+{
+id:41,
+question:"",
+choices:[
+"to the possible",
+"to possible",
+"possible",
+"to be the possibility"
+],
+answer:"C"
+},
+{
+id:42,
+question:"",
+choices:[
+"is",
+"are",
+"which is",
+"which are"
+],
+answer:"A"
+},
+{
+id:43,
+question:"",
+choices:[
+"so",
+"but",
+"or",
+"yet"
+],
+answer:"A"
+},
+{
+id:44,
+question:"",
+choices:[
+"despite",
+"even if",
+"even",
+"though"
+],
+answer:"C"
+},
+{
+id:45,
+question:"",
+choices:[
+"negate",
+"dislocate",
+"spare",
+"transcend"
+],
+answer:"C"
+},
+{
+id:46,
+passage:`Reading Comprehension (15 ข้อ)
+Passage 1 (Items 46–50)
+(1) Prices for certain collectible goods have soared unpredictably, with once-cheap
+figurines now reselling for hundreds of dollars. Although many blame opportunistic
+investors, the trend is rooted in the strategies of niche creators who deliberately limit
+supply to foster exclusivity. By producing small batches of highly distinctive items,
+independent designers have reshaped collector culture, encouraging both emotional
+attachment and speculative buying.
+(2) Rather than relying on galleries or retail chains, many of these creators reach their
+audiences through digital platforms. Social media allows them to showcase new designs
+instantly, interact with potential buyers, and build communities that value uniqueness over
+accessibility. As their popularity grows, previously unknown artists often find themselves at
+the center of major pop-culture events.
+(3) This fusion of online visibility and scarcity has created an ecosystem where
+creativity and commerce intersect in complex ways. Collecting, once driven mainly by
+personal enthusiasm, now increasingly reflects strategic financial calculation as well.
+
+The word “niche” in paragraph 1 is closest in meaning to…
+`,
+choices:[
+"mainstream",
+"specialized",
+"inexpensive",
+"temporary"
+],
+answer:"B"
+},
+{
+id:47,
+question:"Which choice best expresses the main idea of the passage?",
+choices:[
+"Independent creators have used exclusivity and online reach to transform collecting into both a cultural and financial phenomenon.",
+"Collectors have begun abandoning traditional galleries for social media platforms.",
+"Opportunistic investors are the primary drivers of unpredictable price surges.",
+"Social media has replaced physical events in the art industry."
+],
+answer:"A"
+},
+{
+id:48,
+question:"According to paragraph 2, how has social media contributed to creators’ success?",
+choices:[
+"It enables them to share their work widely and cultivate communities of dedicated buyers.",
+"It stabilizes the pricing of niche merchandise in secondary markets.",
+"It forces them to compete with corporate retailers.",
+"It limits their ability to target specific audiences."
+],
+answer:"A"
+},
+{
+id:49,
+question:"What can reasonably be inferred from paragraph 3?",
+choices:[
+"Collecting is no longer motivated purely by personal interest.",
+"Most collectors dislike the commercialization of their hobbies.",
+"Financial speculation has replaced genuine creativity.",
+"Independent creators struggle to maintain visibility online."
+],
+answer:"A"
+},
+{
+id:50,
+question:"The word “them” in paragraph 2 refers to…",
+choices:[
+"digital platforms",
+"buyers",
+"creators",
+"social media communities"
+],
+answer:"C"
+},
+{
+id:51,
+passage:`
+Passage 2 (Items 51–55)
+Kyoto Cultural Day Tour & Scenic Train Ride
+    • Immerse yourself in Japan’s rich heritage with a guided full-day tour through
+    Kyoto’s most iconic landmarks.
+    • Ideal for travelers with a moderate level of fitness who want a well-structured
+    itinerary without the stress of planning transportation or navigating alone.
+    • Perfect for solo travelers, couples, or small groups seeking a balance between
+    cultural exploration and scenic relaxation.
+What’s unique: This tour combines visits to UNESCO World Heritage temples with
+a panoramic train journey through the Arashiyama mountains, offering breathtaking views
+of bamboo forests and riversides rarely seen by casual tourists.
+
+Inclusions
+    • Round-trip transfers from central Osaka
+    • Scenic train tickets (Sagano Romantic Train)
+    • Entry fees to Kinkaku-ji and Tenryu-ji temples
+    • English-speaking local guide
+    • Bento-style lunch featuring seasonal Kyoto cuisine
+
+Exclusions
+    • Personal expenses (e.g., souvenirs, snacks)
+    • Optional kimono rental
+    • Evening activities
+
+Need to know
+    • Tip: Bring a light jacket—the train ride can get chilly, especially in autumn.
+    • Not suitable for wheelchairs or strollers due to uneven terrain at temple sites.
+
+Cancellation Policy
+• Full refunds available up to 48 hours before departure.
+
+This tour would be most suitable for travelers who…
+`,
+choices:[
+"prefer unplanned trips and dislike group activities.",
+"want a curated cultural experience without having to organize transportation themselves.",
+"only wish to visit modern shopping areas.",
+"are fluent in Japanese but unfamiliar with English."
+],
+answer:"B"
+},
+{
+id:52,
+question:"Where is this passage most likely to appear?",
+choices:[
+"On a travel agency’s promotional website",
+"In a Kyoto temple history textbook",
+"On the packaging of a bento lunch box",
+"On a Japanese immigration form"
+],
+answer:"A"
+},
+{
+id:53,
+question:"The word “moderate” in paragraph 1 is closest in meaning to…",
+choices:[
+"demanding",
+"average",
+"extreme",
+"uncertain"
+],
+answer:"B"
+},
+{
+id:54,
+question:"What can be reasonably inferred about this tour?",
+choices:[
+"Travelers are expected to arrange their own temple entry tickets.",
+"The tour aims to reduce logistical stress for participants.",
+"Guests will need to hike for several hours through the forest.",
+"The scenic train is only for professional photographers."
+],
+answer:"B"
+},
+{
+id:55,
+question:"The phrase “What’s unique” implies that…",
+choices:[
+"The tour includes elements not commonly found in typical sightseeing packages.",
+"Participants can skip the train portion if they prefer.",
+"The temples visited are completely closed to the public.",
+"The schedule is inflexible and strictly timed."
+],
+answer:"A"
+},
+{
+id:56,
+passage:`
+Passage 3 (Items 56–60)
+(1) Although often dismissed as little more than a sugary indulgence, high-quality dark
+chocolate has quietly attracted scientific interest for its potential physiological effects.
+Researchers have focused on flavanols, naturally occurring plant compounds that may
+enhance circulation and support vascular health. Yet chocolate’s reputation as a “healthy
+food” remains contested, in part because its nutritional profile varies widely across
+products.
+(2) The benefits observed in controlled studies typically involve chocolate with
+exceptionally high flavanol concentrations—levels that differ drastically from what’s found
+in most commercial bars. Processing methods, added ingredients, and cocoa content all
+influence the degree to which these compounds survive manufacturing. As a result, two
+chocolates that look nearly identical may offer profoundly different physiological impacts,
+despite containing similar amounts of calories and fat.
+(3) For nutrition experts, this complexity is precisely why chocolate should be
+approached with nuance. While moderate consumption of dark varieties may contribute to
+cardiovascular well-being, excessive intake or reliance on heavily processed sweets is
+unlikely to yield the same advantages. In short, chocolate can complement—but not
+replace—a balanced, healthy lifestyle.
+
+Which statement best captures the central contrast presented in paragraph 1`,
+choices:[
+"Chocolate is widely popular but scientifically untested.",
+"Chocolate is seen as indulgent by many, yet it may have genuine health effects.",
+"Chocolate’s reputation as healthy has never been challenged.",
+"Chocolate’s composition is consistent across all products."
+],
+answer:"B"
+},
+{
+id:57,
+question:"What does paragraph 2 mainly emphasize about flavanol levels in chocolate?",
+choices:[
+"They are unrelated to cocoa content.",
+"They are primarily determined by sugar quantity.",
+"They can differ greatly between products that appear similar.",
+"They remain stable during manufacturing."
+],
+answer:"C"
+},
+{
+id:58,
+question:"In paragraph 2, what does the author imply about visual similarity between chocolates?",
+choices:[
+"It can be misleading when evaluating nutritional benefits.",
+"It guarantees identical flavanol content.",
+"It reflects the amount of added sugar.",
+"It has no connection to processing methods."
+],
+answer:"A"
+},
+{
+id:59,
+question:"Which inference can be drawn from paragraph 3?",
+choices:[
+"Eating excessive amounts of chocolate might negate its potential health benefits.",
+"Consuming dark chocolate always guarantees improved cardiovascular health.",
+"Processed sweets typically contain high levels of flavanols.",
+"Chocolate should be avoided entirely for a balanced diet."
+],
+answer:"A"
+},
+{
+id:60,
+question:"The author’s overall attitude toward chocolate can best be described as…",
+choices:[
+"dismissive and skeptical",
+"enthusiastic and promotional",
+"balanced and cautiously optimistic",
+"indifferent and neutral"
+],
+answer:"C"
+}
+];
+
+
+function loadSet(set){
+let start=(set-1)*30+1;
+let end=start+29;
+
+let html="";
+
+for(let i=start;i<=end;i++){
+
+let q = questions.find(x => x.id === i);
+
+if(!q) continue;
+
+html += `
+<div style="padding:10px;border-bottom:1px solid #eee">
+
+<b>Question ${q.id}</b><br><br>
+
+<pre style="
+white-space:pre-wrap;
+font-family:inherit;
+background:#f8f8f8;
+padding:10px;
+border-radius:10px;
+">
+${q.passage || q.question}
+</pre><br>
+
+<label>
+<input type="radio" name="q${q.id}" value="A">
+${q.choices[0]}
+</label>
+<br>
+
+<label>
+<input type="radio" name="q${q.id}" value="B">
+${q.choices[1]}
+</label><br>
+
+<label>
+<input type="radio" name="q${q.id}" value="C">
+${q.choices[2]}
+</label><br>
+
+<label>
+<input type="radio" name="q${q.id}" value="D">
+${q.choices[3]}
+</label>
+
+</label>
+
+<div id="review${q.id}" style="
+margin-top:10px;
+padding:8px;
+background:#fff5f9;
+border-radius:8px;
+display:none;
+"></div>
+
+</div>
+`;
+}
+
+html+=`<button onclick="grade(${start},${end})">Submit</button>`;
+
+document.getElementById("quiz").innerHTML=html;
+}
+
+function grade(start,end){
+
+let score=0;
+
+
+for(let i=start;i<=end;i++){
+
+let selected=document.querySelector(`input[name=q${i}]:checked`);
+let user=selected ? selected.value : "-";
+
+let q = questions.find(x => x.id === i);
+
+if(user===q.answer) score++;
+
+document.getElementById(`review${i}`).style.display = "block";
+
+document.getElementById(`review${i}`).innerHTML = `
+${user===q.answer ? "✅ ถูกต้อง" : "❌ ไม่ถูกต้อง"}
+<br>
+Your Answer: ${user}
+<br>
+Correct Answer: ${q.answer}
+`;
+}
+
+document.getElementById("result").innerHTML=
+`<h2>🎉 คะแนน ${score}/20</h2>`;
+}
+</script>
+
+</body>
+</html>
