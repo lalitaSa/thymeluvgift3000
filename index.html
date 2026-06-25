@@ -23,6 +23,9 @@ background:linear-gradient(180deg,#ffd6e7,#fff4f8);
 min-height:100vh;
 overflow-x:hidden;
 text-align:center;
+.card{background:white;max-width:900px;margin:auto;padding:20px;border-radius:20px}
+button{padding:12px 20px;border:none;border-radius:12px;background:#ff66b3;color:white;cursor:pointer;margin:5px
+}
 }
 
 .container{
@@ -238,7 +241,7 @@ font-size:24px;
 </style>
 </head>
 
-<body>
+<>
 
 <div class="container">
 
@@ -278,7 +281,7 @@ font-size:24px;
 💖 How Much Does Babe Love Me?
 </button>
 
-<button onclick="window.location.href='tgat.html'">
+<button onclick="showPage('tcastest')">
 📝 Mock Test TGAT
 </button>
 
@@ -468,6 +471,32 @@ font-size:24px;
 </div>
 
 </div>
+
+<!-- tcastest -->
+<div id="tcastest" class="page">
+    <div class="card">
+<h1>📝 Mock Test TGAT English</h1>
+<p>เลือกชุดข้อสอบ</p>
+<button onclick="window.location.href='tgat.html'">
+📝 TGAT English 66
+</button>
+
+<button onclick="window.location.href='tgat68.html'">
+📝 TGAT English 68
+</button>
+
+<button onclick="window.location.href='alevel.html'">
+🎓 A-Level English
+</button>
+
+<br><br>
+<button onclick="window.location.href='index.html'">🏠 กลับหน้าหลัก</button>
+
+<div id="quiz"></div>
+<div id="result"></div>
+</div>
+</div>
+
 
 <audio id="bgm" loop>
 <source src="PUN2024.mp3" type="audio/mpeg">
@@ -729,4 +758,3 @@ document.body.appendChild(heart);
 
 </body>
 </html>
-
