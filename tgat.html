@@ -14,9 +14,9 @@ button{padding:12px 20px;border:none;border-radius:12px;background:#ff66b3;color
 <div class="card">
 <h1>📝 Mock Test TGAT English</h1>
 <p>เลือกชุดข้อสอบ</p>
-<button onclick="loadSet(1)">Set 1 (1-20)</button>
-//<button onclick="loadSet(2)">Set 2 (21-40)</button>
-//<button onclick="loadSet(3)">Set 3 (41-60)</button>
+<button onclick="loadSet(1)">Set 1 (1-30)</button>
+<button onclick="loadSet(2)">Set 2 (31-60)</button>
+
 
 <br><br>
 <button onclick="window.location.href='index.html'">🏠 กลับหน้าหลัก</button>
@@ -296,7 +296,25 @@ answer:"A"
 },
 {
 id:21,
-question:"Dan: ________ the new action series on Netflix?",
+passage:`
+Long Conversations (Items 21 - 30)
+Directions: Choose the best answers to complete the following conversations.
+Conversation 1
+Dan : _________(21)________ the new action series on Netflix?
+Sarah : No, what's it about?
+Dan : It's about a man who was sent to jail for killing his best friend.
+Sarah : _________(22)________.
+Dan : You're right. But that's not the whole story. See, the man didn't kill anyone.
+He escapes from prison and searches for the real killer.
+Sarah : _________(23)________?
+Dan : I don't know. I've only seen the first episode.
+Sarah : How many episodes are there?
+Dan : _________(24)________.
+Sarah : Is there anyone in it I might know?
+Dan : One of the actors has been in a few Marvel movies, but I don't know his
+name. He played Loki.
+Sarah : Do you mean Tom Hiddleston? I love Tom Hiddleston! _________(25)________.
+`,
 choices:[
 "How often do you watch",
 "Have you seen",
@@ -307,7 +325,7 @@ answer:"B"
 },
 {
 id:22,
-question:"Sarah: ________.",
+question:"",
 choices:[
 "It doesn't look interesting",
 "It doesn't sound exciting",
@@ -318,7 +336,7 @@ answer:"B"
 },
 {
 id:23,
-question:"Sarah: ________ ?",
+question:"",
 choices:[
 "What channel is it on",
 "What time is it on",
@@ -329,7 +347,7 @@ answer:"C"
 },
 {
 id:24,
-question:"Dan: ________.",
+question:"",
 choices:[
 "30 minutes each",
 "Twelve in total",
@@ -340,7 +358,7 @@ answer:"B"
 },
 {
 id:25,
-question:"Sarah: Do you mean Tom Hiddleston? I love Tom Hiddleston! ________.",
+question:"",
 choices:[
 "I want to see a Marvel movie!",
 "He ruins every character",
@@ -348,9 +366,503 @@ choices:[
 "I think I'll pass"
 ],
 answer:"C"
+},
+{
+id:26,
+passage:`
+Conversation 2 (On the phone)
+Susan : Hello
+Carol : Hello, is Susan there?
+Susan : _________(26)________.
+Carol : Hi Susan, it's Carol.
+Susan : Carol! How are you?
+Carol : Actually, can you
+Susan : Sure. What is it?
+Carol : Well, my parents are going out of town next weekend. Can you
+_________(28)________ to the airport on Saturday?
+Susan : No problem. What time does your flight leave?
+Carol : It leaves at noon, but I should arrive three hours before departure.
+Susan : How about I _________(29)________ at eight a.m.?
+Carol : That sounds great. _________(30)________.
+Susan : No problem. See you Saturday!
+`,
+choices:[
+"Just a moment, please",
+"Please, call back later",
+"My name is Susan",
+"Speaking"
+],
+answer:"D"
+},
+{
+id:27,
+question:"",
+choices:[
+"send me a favor",
+"help me a favor",
+"pay me a favor",
+"do me a favor"
+],
+answer:"D"
+},
+{
+id:28,
+question:"",
+choices:[
+"give me a hand",
+"give me a lift",
+"go for a drive",
+"go for a ride"
+],
+answer:"B"
+},
+{
+id:29,
+question:"",
+choices:[
+"send you off",
+"drive to you",
+"pick you up",
+"receive you"
+],
+answer:"C"
+},
+{
+id:30,
+question:"",
+choices:[
+"What's the problem?",
+"When can we meet?",
+"I really appreciate it",
+"fill pass it on"
+],
+answer:"C"
+},
+{
+id:31,
+passage:`
+Text Completion (Items 31 - 45)
+Directions: Choose the best answers to complete the following passages.
+Passage 1
+Dear Mr. Weasley,
+It is my great _________(31)________ to congratulate you on receiving the 100,000 baht
+Government Association Scholarship for the 2023-2024 academic year, ________(32)________
+will you enable you to enroll in Hogwarts College. The selection committee ______(33)______
+your talents, achievements, and need for support in reaching your academic goals.
+The funds will be given during the course of the following academic year. You can use the
+money to pay for _________(34)________ during the pre-registration and registration periods,
+as specified in the scholarship. Any remaining funds may be used to purchase textbooks,
+school materials, and other school-related items in the Hogwarts bookstore. The remaining
+money will be transferred to your account approximately four to eight weeks after
+registration. We _________(35)________ a booklet that will guide you through our scholarship
+program.
+On behalf of the Scholarship Committee, I _________(36)________ warmly congratulate you
+once again and _________(37)________ you continued success throughout your college career.
+We _________(38)________ welcoming you as a student at Hogwarts College. If you have any
+questions, please contact Mr. Harry Potter in Room 456 of our scholarship office in the main
+building or call (662) 456-7890.
+Sincerely,
+Professor Albus Dumbledore
+Chairman of Scholarship Committee
+`,
+choices:[
+"pleasure",
+"pleasant",
+"pleasing",
+"pleased"
+],
+answer:"A"
+},
+{
+id:32,
+question:"",
+choices:[
+"which",
+"what",
+"when",
+"who"
+],
+answer:"A"
+},
+{
+id:33,
+question:"",
+choices:[
+"recognizes",
+"reviews",
+"reminds",
+"returns"
+],
+answer:"A"
+},
+{
+id:34,
+question:"",
+choices:[
+"extracurricular activities",
+"transportation costs",
+"apartment rents",
+"tuition and fees"
+],
+answer:"D"
+},
+{
+id:35,
+question:"",
+choices:[
+"will have enclosed",
+"will be enclosed",
+"have enclosed",
+"are enclosed"
+],
+answer:"C"
+},
+{
+id:36,
+question:"",
+choices:[
+"would appreciate",
+"would be great",
+"would agree to",
+"would like to"
+],
+answer:"D"
+},
+{
+id:37,
+question:"",
+choices:[
+"desire",
+"prefer",
+"hope",
+"wish"
+],
+answer:"D"
+},
+{
+id:38,
+question:"",
+choices:[
+"look forward to",
+"look up to",
+"look after",
+"look for"
+],
+answer:"A"
+},
+{
+id:39,
+passage:`Passage 2
+In 1997, the average Thai person consumed 19 teaspoons of sugar a day. That's
+_________(39)________ the amount of daily sugar intake recommended by the World Health
+Organization (WHO), which is only six teaspoons. More than a decade later, each Thai person
+consumes an average of 25.5 teaspoons of sugar per day, _________(40)________ various
+campaigns to combat the nation's excessive sugar consumption.
+A recent study by the University of Zurich shows that consuming too much sugar doubles
+the body's fat production in the liver. In the long run, this can _________(41)________ the
+development of diabetes or fatty liver disease. To prevent health problems among Thai
+consumers, the Public Health Ministry aims to build health literacy among the public through
+health-promotion activities, lower-sugar recipes for drinks, and ________(42)________. The
+ministry has therefore targeted sugary drinks in its latest campaign to limit
+_________(43)________ among Thais. The ministry signed a memo of understanding with health
+agencies to promote beverages with reduced sugar. In 2017, Thailand began taxing
+beverages _________(44)________ more than 6 grams of sugar per 100 ml. The tax is adjusted
+every two years in a bid to reduce excess consumption of sugar and _________(45)________ the
+industrial sector to adjust gradually.`,
+choices:[
+"three more than times",
+"more three times than",
+"more than three times",
+"three than more times"
+],
+answer:"C"
+},
+{
+id:40,
+question:"",
+choices:[
+"however",
+"although",
+"whereas",
+"despite"
+],
+answer:"D"
+},
+{
+id:41,
+question:"",
+choices:[
+"succeed in",
+"result from",
+"depend on",
+"lead to"
+],
+answer:"D"
+},
+{
+id:42,
+question:"",
+choices:[
+"more responsibility marketing",
+"more responsible marketing",
+"any responsibility marketing",
+"any responsible marketing"
+],
+answer:"B"
+},
+{
+id:43,
+question:"",
+choices:[
+"harmful sugar consumption",
+"food industry expansion",
+"sweet tooth permission",
+"bubble tea production"
+],
+answer:"A"
+},
+{
+id:44,
+question:"",
+choices:[
+"containing",
+"contained",
+"contains",
+"contain"
+],
+answer:"A"
+},
+{
+id:45,
+question:"",
+choices:[
+"to approve",
+"to admit",
+"to access",
+"to allow"
+],
+answer:"D"
+},
+{
+id:46,
+passage:`Reading Comprehension (Items 46 - 60)
+Directions: Read the following passages and choose the best answer for each question.
+Passage 1
+Hi Sandra,
+(1) How's it going? We haven't been in touch for ages. Hope all's well with you. Life's pretty
+busy here as usual, I've got a new job as a tutor at teaching Italian, math, and basic science.
+I've been working there for almost three months now. It's hard work but I really enjoy it.
+Teaching young kids is so exciting for me.
+(2) Anyway, the really big news is I'm pregnant. We were so surprised. I've been told I'm
+having twins. Jack and I are over the moon but a bit nervous though. We'll be off on a trip to
+London this weekend. We want to see Nina and Dylan there. I need some advice from them
+because they also have twins.
+(3) Miss you so much! Always remember our good old days in Tokyo as exchange students
+10 years ago. I’d love to hear all your news. Are you still working in Bangkok? We've just
+moved to a bigger house so maybe you can come and visit us sometime here in Liverpool.
+Looking forward to hearing from you!
+Love,
+Evelyn
+
+What does the phrase “over the moon” in the second paragraph mean?`,
+choices:[
+"Very stressed",
+"Very pleased",
+"Very amused",
+"Very worried"
+],
+answer:"B"
+},
+{
+id:47,
+question:"Where does Evelyn live?",
+choices:[
+"Liverpool",
+"Bangkok",
+"London",
+"Tokyo"
+],
+answer:"A"
+},
+{
+id:48,
+question:"Who does the word ‘we’ in the third paragraph refer to?",
+choices:[
+"Evelyn and Sandra",
+"Evelyn and Dylan",
+"Evelyn and Jack",
+"Evelyn and Nina"
+],
+answer:"C"
+},
+{
+id:49,
+question:"Why will Evelyn travel to London this coming weekend?",
+choices:[
+"She wants to get her friends' tips for raising twins.",
+"She has an appointment with Sandra and Nina.",
+"She is slightly nervous about her pregnancy.",
+"She was hired by a tutoring school there."
+],
+answer:"A"
+},
+{
+id:50,
+question:"What can be inferred from the email?",
+choices:[
+"Evelyn's husband is not ready to be a parent.",
+"Dylan and Nina are not friends of Sandra's.",
+"Evelyn's pregnancy was unexpected.",
+"Sandra is still working in Bangkok."
+],
+answer:"C"
+},
+{
+id:51,
+passage:`Passage 2
+To all staff members,
+(1) We are delighted to announce that Henry Norton has earned a well-deserved promotion
+to Director of Marketing, effective December 1, 2022. He joined us from the branch in
+Singapore and has been part of our organization for the past 9 years, during which time he
+has held positions in sales and management, proving himself to be a committed company
+advocate.
+(2) Henry has shown complete dedication during his time here. He has brought with him
+honesty and enthusiasm that he has continued to demonstrate while encouraging the sales
+team to consistently improve their sales numbers. With his extensive experience, we are
+certain that he will exhibit excellent performance and leadership.
+(3) The company would like to congratulate him on his success and wish him a promising
+future. We are going to host a party to celebrate his new position. We hope you can join us
+for the party.
+Regards,
+Caroline Parker
+President
+
+What kind of announcement is the above text?`,
+choices:[
+"Organizational restructuring announcement",
+"New employee announcement",
+"Promotion announcement",
+"Sales announcement"
+],
+answer:"C"
+},
+{
+id:52,
+question:"Which word is closest in meaning to the word 'dedication' in the paragraph?",
+choices:[
+"Sincerity",
+"Devotion",
+"Patience",
+"Faith"
+],
+answer:"B"
+},
+{
+id:53,
+question:"What is NOT a reason for Henry Norton's success in his career?",
+choices:[
+"He has demonstrated leadership potential.",
+"He has increased the sales staff numbers.",
+"He is an enthusiastic employee.",
+"He has wide work experience."
+],
+answer:"B"
+},
+{
+id:54,
+question:"What is NOT a way the company honored Henry Norton's achievement?",
+choices:[
+"The company arranged a party to celebrate his new position.",
+"The company wished him a bright future at the company.",
+"The company informed the staff of his promotion.",
+"The company gave him permission to relocate."
+],
+answer:"D"
+},
+{
+id:55,
+question:"Why was Henry Norton promoted to a higher position?",
+choices:[
+"He rewarded his staff's contribution to the company's increased sales.",
+"He displayed qualities which helped to increase company sales.",
+"He organized a number of business projects for the company.",
+"He worked in the Singapore branch for around 9 years."
+],
+answer:"B"
+},
+{
+id:56,
+passage:`Passage 3
+(1) Located on the east coast of Scotland, St Andrews is known as the 'home of golf,' but it's
+a residence shared by some highly disruptive roommates seagulls. As they circle for food,
+the fear of being the unfortunate landing spot for their waste is a constant anxiety, with
+several staff and fans already voicing complaint.
+(2) Fans navigating the Old Course during the week will be familiar with a pair of hawks, an
+Indian eagle-owl, and a tawny eagle. The guardian birds perch on their handler's gloves to
+scare off seagulls from the picnic area, as well as the 1st and 18th grandstands. The birds
+come from the nearby Elite Falconry, hired for the event, with the handler named John on
+lunchtime duty for Thursday's opening round after a flurry of seagull activity during the
+early morning.
+(3) 'Without us here, the seagulls would be dive-bombing people trying to steal their food,'
+John told CNN Sports. Since seagulls are not a typical cuisine of the four birds of prey, they
+don't fly around the course and instead sit calmly on their handler's glove for the duration
+of their watch, their presence alone enough to frighten away the unwanted visitors.
+
+Which word is closest in meaning to the word “disruptive” in the first paragraph?`,
+choices:[
+"Disappointing",
+"Troublesome",
+"Greedy",
+"Noisy"
+],
+answer:"B"
+},
+{
+id:57,
+question:"In the first paragraph, the clause 'the fear of being the unfortunate landing spot for their waste is a constant anxiety' means the staff and fans.",
+choices:[
+"are afraid that the seagulls will attack",
+"are concerned about becoming dirty",
+"are anxious about wasting their time",
+"are worried about the birds' safety"
+],
+answer:"B"
+},
+{
+id:58,
+question:"What is John's main duty?",
+choices:[
+"To supervise the grandstands and picnic area",
+"To navigate fans across the Old Course",
+"To control the birds of prey",
+"To prepare lunch"
+],
+answer:"C"
+},
+{
+id:59,
+question:"In the last paragraph, who or what does the phrase “the unwanted visitors” refer to?",
+choices:[
+"The food-stealing people",
+"The four birds of prey",
+"The seagulls",
+"The fans"
+],
+answer:"C"
+},
+{
+id:60,
+question:"Why do the birds of prey NOT fly around the golf course during the match?",
+choices:[
+"They prefer to sit quietly on their handler's gloves.",
+"They are trained to attract only unwanted visitors.",
+"They come from Elite Falconry with a handler.",
+"They do not hunt seagulls for food by nature."
+],
+answer:"D"
 }
 ];
-  
+
 const answers={
 1:'C',2:'C',3:'D',4:'A',5:'D',
 6:'B',7:'A',8:'C',9:'B',10:'D',
@@ -367,8 +879,8 @@ const answers={
 };
 
 function loadSet(set){
-let start=(set-1)*20+1;
-let end=start+19;
+let start=(set-1)*30+1;
+let end=start+29;
 
 let html="";
 
