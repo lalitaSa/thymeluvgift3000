@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock TGAT</title>
+<style>
+body{font-family:Arial,sans-serif;background:#ffd6e7;padding:20px}
+.card{background:white;max-width:900px;margin:auto;padding:20px;border-radius:20px}
+button{padding:12px 20px;border:none;border-radius:12px;background:#ff66b3;color:white;cursor:pointer;margin:5px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>📝 Mock Test TGAT English ปี 65</h1>
+
+
+
+<br><br>
+<button onclick="window.location.href='index.html'">🏠 กลับหน้าหลัก</button>
+
+<div id="quiz"></div>
+<div id="result"></div>
+<hr>
+
+<h3>📊 ประวัติการทำข้อสอบ</h3>
+
+<div id="history"></div>
+
+<button onclick="clearHistory()">
+🗑 ล้างประวัติ
+</button>
+</div>
+<script>
+
+const questions = [
+{
+id:1,
+passage:`
+Part One: Expressions (Items 1 - 15) Choose the best answer.
+A get-together
+A: We're having a get-together at Sara's house this Saturday. You want
+to come?
+B: Yeah, that sounds fun. When is it?
+A: It is at 6 PM. __________(1)__________?
+B: Um, as long as I can get a ride.
+A: Oh, I think I can pick you up. Maybe around 5:45? Is that okay?
+B: Yeah, that sounds great. Can I bring something?
+A: There will be some food provided so you don't have to bring
+anything. But if you want to bring your own dish or your own food,
+that's fine. _______ (2) _______.
+`,
+
+choices:[
+"Do you think you can make it",
+"What's your advice",
+"What are you lacking",
+"Do you want me to pick you up",
+"Do you need a ride"
+],
+answer:"A"
+},
+
+{
+id:2,
+question:"",
+choices:[
+"Your spicy Thai curry sounds good",
+"That will be perfect",
+"I think I can call some friends",
+"It's kind of your choice",
+"It's just around the corner"
+],
+answer:"D"
+},
+
+{
+id:3,
+passage:`Low energy
+Situation: In the hallway
+A: What do you do if you have low energy?
+B: To be honest, if I have low energy, I sleep. I always try to take a nap
+on the weekend.
+A: Nice.
+B: What do you do if you feel tired?
+A: Well, if I'm just really sleepy, of course, I sleep. But if I have low
+energy, I eat vegetables. So, I make a salad, or I eat just vegetables
+raw like a raw carrot or celery or something like that. I find that
+when I eat vegetables, ______ (3) ______.
+B: __________ (4) _________.`,
+choices:[
+"I lost my temper",
+"I get a big energy boost",
+"you want to go to sleep",
+"fruit does not work",
+"I can take a nap"
+],
+answer:"B"
+},
+
+{
+id:4,
+question:"",
+choices:[
+"They give you their probiotic activity",
+"It's a little difficult",
+"That's a really healthy response",
+"Fruit makes me sleepy",
+"I saw it in my own practice"
+],
+answer:"C"
+},
+
+{
+id:5,
+passage:`Change of Personality
+A: Do you think your personality is different in each language?
+B: That's a great question. Just thinking of it right now, I think maybe
+for me it's more a question of the culture because I think when I am
+in an environment where_______ (5) ________, ________ (6) ________.
+A: Right.
+B: I tend to try to be more cheerful, more open, or friendlier, I should
+say. But when I'm somewhere where I know that it's expected of me
+to be quieter, I do tend to become quieter.`,
+choices:[
+"I don't do that so much anymore",
+"I pretend to be grumpy",
+"my introverted self really comes out",
+"I'm expected to be more extroverted",
+"I get all the information I need"
+],
+answer:"D"
+},
+
+{
+id:6,
+question:"",
+choices:[
+"I'd rather go somewhere a little more rural",
+"I'm in front of a large crowd",
+"I very much prefer my own company",
+"that sounds awful",
+"I tend to try to live up to that"
+],
+answer:"E"
+},
+
+{
+id:7,
+passage:`Pets
+A: Did you have any pets when you were a kid?
+B: I did. I had many pets, actually. I grew up on a farm, so we raised lots
+of animals. On the farm, I always felt like the animals were my pets. It
+was pretty cool.
+A: Wow. ____________ (7) ___________. What kind of animals were on your
+farm?
+B: We had almost every farm animal possible. For example, we raised a
+lot of pigs. And pigs are great pets. They are very friendly animals.
+Also, pigs like people. So sometimes when we-were little, we would
+ride on the pigs' backs but if our grandpa saw us riding on the pigs,
+he would yell at us.
+__________ (8) ___________.
+A: Uh-oh.`,
+choices:[
+"That sounds really exciting for a kid",
+"They're very curious",
+"That is child's play",
+"That's how it turns out",
+"Boys will be boys"
+],
+answer:"A"
+},
+
+{
+id:8,
+question:"",
+choices:[
+"He's not very social",
+"We always got in trouble",
+"They like to be petted",
+"That's like letting the cat out of the bag",
+"He's a straight arrow"
+],
+answer:"B"
+},
+
+{
+id:9,
+passage:`Two home countries
+A: I heard that you grew up with two homes. Can you tell us a little bit
+about what it's like having two homes? Do you feel any particular
+loyalty more to one than the other or are they both home for you?
+B: That's a good question. I think for me, both places are home. I grow
+up in Nigeria and in Canada. My extended family is in Nigeria. When I
+go there, I instantly feel at home. ___________(9)___________ . It's
+almost like I never left. But then I go to Canada, and I think that
+__________ (10) __________. Like, I think more like a Canadian. So that
+is home, too. A lot of my friends are in Canada. My parents are in
+Canada. So, I don't know. __________ (11) __________.
+A: So, it is possible for a person to have two homes then.
+B: I think it is possible, yeah. And it's great. It's awesome.`,
+choices:[
+"I feel completely alienated",
+"They are moving on with their lives",
+"I immediately make a beeline for Nigeria",
+"They welcome me with open arms",
+"It took quite some time to readjust to life there"
+],
+answer:"D"
+},
+
+{
+id:10,
+question:"",
+choices:[
+"there's a lot to take in",
+"my mentality is more oriented toward that way",
+"I just put two and two together",
+"it blew my mind",
+"I spent a lot of time in Canada picking my brain"
+],
+answer:"B"
+},
+
+{
+id:11,
+question:"",
+choices:[
+"I don't seem to accommodate both groups",
+"It's not easy to reintegrate into my city",
+"I've missed being away from home",
+"I have a completely different accent",
+"I don't really feel a conflict of interest most of the time"
+],
+answer:"E"
+},
+
+{
+id:12,
+passage:`Living in the Yazidi community
+A: What was your childhood like? What was it like growing up in the
+Yazidi community?
+B: I grew up with 11 siblings, 8 brothers and 2 sisters. We all lived with
+our mother in a village named Kocho, which falls closer to the Arabic
+territory of Iraq. We didn't have a book that we could read so my
+mother taught us through stories and lessons here and there. Even
+as adults, we were still learning, because there's nothing that's
+written down to teach us about our culture and religion.
+___________(12)___________.
+A: ___________(13)___________.`,
+choices:[
+"We're talking about a moment in time",
+"My mother is an advocate for justice and restitution",
+"It's up to previous generations to pass it on",
+"To have this all bundled up as experiences is a burden",
+"We will not be delving into the details"
+],
+answer:"C"
+},
+
+{
+id:13,
+question:"",
+choices:[
+"Never tell tales out of school",
+"It will just come right up",
+"That is a huge culture shock",
+"That is only a matter of time",
+"That is clearly an oral tradition"
+],
+answer:"E"
+},
+
+{
+id:14,
+passage:`Ordering a meal
+Waiter: Hello, I'll be your waiter today. ___________(14) __________?
+David: Yes. I'll have iced tea, please.
+Jane: And I'll have lemonade.
+Waiter: OK. Are you ready to order, or do you need a few minutes?
+David: I think we're ready. I’ll have the tomato soup to start, and the
+roast beef with mashed potatoes and peas.
+Waiter: How do you want the beef?
+Ralph: ___________ (15) __________.`,
+choices:[
+"Can I start you off with something to drink",
+"What is bothering you",
+"Is there anything else",
+"What can I do for you today",
+"Would you like to try it on"
+],
+answer:"A"
+},
+
+{
+id:15,
+question:"",
+choices:[
+"Ready, please",
+"Common, please",
+"Well done, please",
+"Middle, please",
+"Cutlery, please"
+],
+answer:"C"
+},
+{
+id:16,
+question:"She kept all the receipts from her business trip in order to __________ her expenses for the firm.",
+choices:[
+"exclude",
+"contract",
+"exile",
+"enrich",
+"document"
+],
+answer:"E"
+},
+
+{
+id:17,
+question:"I have never seen a better __________ working partnership than that of John and Mary; they are a true yin and yang in our workplace.",
+choices:[
+"explanatory",
+"complementary",
+"temporary",
+"mandatory",
+"secondary"
+],
+answer:"B"
+},
+
+{
+id:18,
+question:"The dictator __________ power over the island for many years.",
+choices:[
+"defeated",
+"exercised",
+"aggravated",
+"deceased",
+"offended"
+],
+answer:"B"
+},
+
+{
+id:19,
+question:"We need to ensure a smooth ___________ between the old system and the new one.",
+choices:[
+"restriction",
+"declaration",
+"deception",
+"transition",
+"complexion"
+],
+answer:"D"
+},
+
+{
+id:20,
+question:"They feared the AIDS epidemic would soon reach ___________ proportions.",
+choices:[
+"pandemic",
+"opaque",
+"modest",
+"chronic",
+"adapt"
+],
+answer:"A"
+},
+
+{
+id:21,
+question:"Please act as my proxy and vote for this slate of candidates in my absence.",
+choices:[
+"admirer",
+"specialist",
+"representative",
+"guarantor",
+"assistant"
+],
+answer:"C"
+},
+
+{
+id:22,
+question:"The newspapers disapproved of the severity of the sentence.",
+choices:[
+"extremity",
+"facility",
+"complexity",
+"security",
+"priority"
+],
+answer:"A"
+},
+
+{
+id:23,
+question:"Your father is a very thoughtful man.",
+choices:[
+"competitive",
+"psychic",
+"mindful",
+"considerate",
+"psychological"
+],
+answer:"D"
+},
+
+{
+id:24,
+question:"He was panting from the exertion of climbing the stairs.",
+choices:[
+"energy",
+"effort",
+"power",
+"spirit",
+"strength"
+],
+answer:"B"
+},
+
+{
+id:25,
+question:"Competing in volatile markets feels a lot like boxing.",
+choices:[
+"vivid",
+"growing",
+"heavyweight",
+"global",
+"turbulent"
+],
+answer:"E"
+},
+
+{
+id:26,
+question:"In the ___________ phase, policy makers will need to assure ___________ with requirements and develop a plan to update the regulation as needed.",
+choices:[
+"navigation, abandonment",
+"legal, context",
+"implementation, compliance",
+"regulatory, transaction",
+"related, dispute"
+],
+answer:"C"
+},
+
+{
+id:27,
+question:"The ecosystem approach is a __________ for the integrated management of land, water and living resources that promotes conservation and ___________ use in an equitable way.",
+choices:[
+"diversity, additional",
+"strategy, sustainable",
+"environment, expert",
+"principle, concerning",
+"guidance, excessive"
+],
+answer:"B"
+},
+
+{
+id:28,
+question:"The cost of corruption greatly __________ the sum of bribes paid, funds misappropriated, and taxes ___________. Corruption hinders development.",
+choices:[
+"exceeds, avoided",
+"contributes, reported",
+"delivers, budgeted",
+"affects, filed",
+"demands, rendered"
+],
+answer:"A"
+},
+
+{
+id:29,
+question:"Understanding the depth and reach of this ___________ of racism can be ____________ but doing so brings each person closer to addressing systemic inequity.",
+choices:[
+"adjustment, private",
+"inclusion, systematic",
+"opportunity, humiliated",
+"ideology, challenging",
+"knowledge, exerted"
+],
+answer:"D"
+},
+
+{
+id:30,
+question:"The tendency to make this adjustment, either __________ or more often _________, is not greatly different for different political groups.",
+choices:[
+"protective, safely",
+"certainly, effortlessly",
+"inquisitive, inquiring",
+"accidentally, massively",
+"deliberately, unconsciously"
+],
+answer:"E"
+},
+{
+id:31,
+passage:`Part Three: Reading (Items 31 - 45) Choose the best answer.
+Passage 1 (Items 31-35)
+Given the plight of present-day coffee farmers. one might assume the
+coffee business ______(31)______, perhaps plagued by razor thin margins
+and floundering demand. Nothing could be further from the truth.
+Globally, the industry is valued at more than $200 billion. However, less
+than 10% of that aggregate wealth stays in producing countries, and only
+5 to 7% makes it to the farmers themselves. Much of the rest goes to
+wealthy companies and their executives, who are almost exclusively based
+in North Amcrica and Europe.
+As prices paid to farmers have steadily declined, what consumers pay for
+coffee ______(33)______. Between 1996 and 2018, the average retail cost of
+a 16-oz. bag jumped from $4.04 to $9.67 and cost of a cup from $1.25 to
+$1.94. That would be fine if it followed a trend of larger returns passed to
+deserving producers, but that's not the case. If you bought a Grande Latte
+later today, you would probably pay around $3.65. The farmer responsible
+for those beans would receive $0.02 or $0.03 of that.
+Considering that the sleeve around that cup costs $0.05, the takeaway is
+that a small piece of cardboard is more valuable than the farmer's work.
+
+31. The best phrase to complete the blank is __________.
+`,
+choices:[
+"fill the lucrative role",
+"gain more profit from what they produce",
+"is largely unprofitable",
+"adheres strictly to ecological farming practicing",
+"relies on cheap labor to thrive"
+],
+answer:"C"
+},
+
+{
+id:32,
+question:"The word 'aggregate' can be replaced by __________.",
+choices:[
+"gross",
+"costly",
+"subsidiary",
+"comparable",
+"inconsiderable"
+],
+answer:"A"
+},
+
+{
+id:33,
+question:"The best phrase to complete the blank is __________.",
+choices:[
+"has diversified",
+"has plunged",
+"has tripled",
+"has soared",
+"has expanded"
+],
+answer:"D"
+},
+
+{
+id:34,
+question:"Which of the following statements is TRUE, based on the passage?",
+choices:[
+"Socio-economic marginalization does not exist in the coffee industry.",
+"The financial disparity between producers and coffee companies is unethical.",
+"The more consumers pay for coffee, the higher prices are paid to farmers.",
+"Big companies experience systemic poverty traps and intense marginalization.",
+"Coffee producing countries are mostly in North America and Europe."
+],
+answer:"B"
+},
+
+{
+id:35,
+question:"It can be inferred from the passage that the author ___________.",
+choices:[
+"opposes negotiating power farmers have in the sale price",
+"believes that coffee business is not making enough profit",
+"does not support social justice",
+"discourages coffee companies from sufficiently compensating farmers",
+"urges coffee companies to pay fair, livable prices to farmers"
+],
+answer:"E"
+},
+
+{
+id:36,
+passage:`Passage 2 (Items 36-40)
+Food production accounts for one-quarter of the world's greenhouse gas
+emissions and takes up half of the planet's habitable surface. Meat and
+dairy specifically account for around 14.5% of global greenhouse gas
+emissions. If the world is to meet its target of limiting global warming to
+1.5C, _____(36)_____.
+In a very broad-brush approach, the products from ruminant animals -
+sheep, cows and their relatives, animals with four stomachs - tend to have
+greater greenhouse gas effects. Part of that is because digestion by
+ruminants produces a lot of methane.
+Producing beef is more than twice as _____(38)_____ as producing lamb.
+One reason for this is that cows take longer to grow and reproduce,
+meaning the production of beef requires much more feed and land than
+other types of meat. The conversion of land for beef production and
+animal feed is a leading cause of deforestation in many tropical regions,
+including in the Amazon, where a recent spike in forest fires and clearing
+has been linked to cattle ranching.
+
+36. The best sentence to complete the blank is __________.
+`,
+choices:[
+"consumers should choose products made in their country of origin",
+"we need to get everybody to limit their phone use",
+"changes to diet are crucial",
+"home cooking is required",
+"we need to avoid perishable fruits"
+],
+answer:"C"
+},
+
+{
+id:37,
+question:"The phrase “In a very broad-brush approach” means __________.",
+choices:[
+"In particular",
+"In a thorough approach",
+"Specifically",
+"All in all",
+"In general"
+],
+answer:"E"
+},
+
+{
+id:38,
+question:"The best phrase to complete the blank is ___________.",
+choices:[
+"resourceful",
+"hassle-free",
+"straightforward",
+"carbon intensive",
+"long-standing"
+],
+answer:"D"
+},
+
+{
+id:39,
+question:"Which of the following statements is TRUE, based on the passage?",
+choices:[
+"Meat and dairy accounts for over half of all greenhouse gasses from food production.",
+"Beef has smaller carbon footprints than lamb.",
+"The world's population lives on over half of the land.",
+"The climate impact of beef and lamb is not related to their biology.",
+"The cutting down of tropical forest causes the suppression of long-held stores of carbon."
+],
+answer:"A"
+},
+
+{
+id:40,
+question:"Which of the following statements can be inferred from the passage?",
+choices:[
+"Imported animal feed can have a large climatic impact.",
+"Meat and dairy do not contribute much to nutrition.",
+"A more plant-based diet would help to reduce greenhouse gas emissions.",
+"Animals are fed on grain imported from other countries",
+"Under the right farming conditions, livestock rearing can have a minimal impact on the climate"
+],
+answer:"C"
+},
+
+{
+id:41,
+passage:`Passage 3 (Items 41-45)
+Technologists’ desire to make technology a parallel to evolution is flawed
+at its very foundation. Evolution is driven by random mutation. (And while
+some inventions may indeed be the result of mishaps, the decision of a
+company to patent, produce, and market those inventions is not.)
+Evolution doesn’t have meetings about the market, the environment, the
+customer base. Evolution doesn't patent things or do focus groups.
+___________ (42) _________ doesn't spend millions of dollars lobbying
+Congress to ensure that its plans go unfettered.
+In some situations, even if we can't literally put a technological __________
+(44) _________ back in a bottle, we can artificially intervene to make sure
+the genie plays by specific rules. There are clear laws about what
+companies can and can't do in the realm of technology. Technology
+companies can also be shaped or restrained with the public's interest in
+mind.
+
+41. How should the sentence “Evolution is driven by random mutation.” be paraphrased?`,
+choices:[
+"Evolution is influenced by systematic configuration.",
+"Evolution is driven by mistakes.",
+"Evolution is motivated by regular expressions.",
+"Evolution is caused by deliberate variation.",
+"Evolution is driven by calculated schemes."
+],
+answer:"B"
+},
+
+{
+id:42,
+question:"The best word to complete the blank is ___________.",
+choices:[
+"Technology",
+"Inventions",
+"The market",
+"Evolution",
+"A company"
+],
+answer:"D"
+},
+
+{
+id:43,
+question:"The word 'unfettered' can be replaced by __________.",
+choices:[
+"obstructed",
+"undergone",
+"unrestricted",
+"unleashed",
+"held up"
+],
+answer:"C"
+},
+
+{
+id:44,
+question:"The best word to complete the blank is __________.",
+choices:[
+"situation",
+"intervention",
+"rule",
+"plan",
+"genie"
+],
+answer:"E"
+},
+
+{
+id:45,
+question:"What is the main idea of the passage?",
+choices:[
+"A progression of technology can be equated to evolution.",
+"Artificial intelligence is in the heart of evolution.",
+"Evolution is a terrible metaphor for technology.",
+"Technology goes against natural laws of evolution.",
+"The evolution of technology is inevitable."
+],
+answer:"C"
+},
+{
+id:46,
+passage:`Part Four: Structure and Writing (Items 46 - 60)
+Items 46 - 50
+Choose the best answer.
+
+46. Long-term follow-up of vaccine trial participants (1) have revealed a (2)
+growing risk of breakthrough (3) infection as (4) antibody levels among
+vaccinated (5) individuals decline.`,
+choices:[
+"have",
+"growing",
+"infection",
+"antibody levels",
+"individuals"
+],
+answer:"A"
+},
+
+{
+id:47,
+passage:`Healthcare (1) records from countries such as Israel, (2) United
+Kingdom and (3) elsewhere all show that COVID-19 (4) vaccines are losing
+(5) their long-term strength.`,
+choices:[
+"records",
+"United Kingdom",
+"elsewhere",
+"vaccines",
+"their long-term strength"
+],
+answer:"B"
+},
+
+{
+id:48,
+passage:`What remains unclear is (1) to what degree the immune system's
+safeguards (2) that protect vaccinated people (3) against severe disease,
+hospitalization, and (4) dead might be (5) fading as well.`,
+choices:[
+"to what degree",
+"that protect vaccinated people",
+"against severe disease",
+"dead",
+"fading as well"
+],
+answer:"D"
+},
+
+{
+id:49,
+passage:`In one of the only long-term (1) study (2) to consider these three
+planks of the immune system (3) simultaneously - antibodies, B cells, and T
+cells researchers found that vaccination (4) spurred durable (5) cellular
+immunity.`,
+choices:[
+"study",
+"to consider",
+"simultaneously",
+"spurred",
+"cellular immunity"
+],
+answer:"A"
+},
+
+{
+id:50,
+passage:`50. Older people (1) given (2) a third dose of vaccine were less likely to
+become (3) infected and much Iess likely to develop severe disease than
+(4) those who (5) were not received the boosters.`,
+choices:[
+"given",
+"a third dose of vaccine",
+"infected",
+"those who",
+"were not received the boosters"
+],
+answer:"E"
+},
+
+{
+id:51,
+passage:`Items 51 - 55
+Choose the best answer.
+Gender equality is a human right, but our world faces a persistent gap in
+access to decision-making power for women and men. Globally, women
+have ________ (51) ________ for economic participation than men, less
+access to basic and higher education, greater health and safety risks, and
+less political representation.
+Education is a key area of focus. Although the world is _______ (52) ________
+in achieving gender parity in education, girls still _______ (53) ________
+higher percentage of out-of- school children than boys. Approximately one
+quarter of girls in the developing world do not attend school. Typically,
+families with limited means who cannot afford costs _______ (54) ________
+school fees, uniforms, and supplies for all of their children will prioritize
+education for their sons. Families may also rely on girls' labor for
+household chores, carrying water, and childcare, _________ (55) ________
+limited time for schooling.`,
+choices:[
+"less opportunity",
+"less opportunities",
+"fewer opportunity",
+"fewer opportunities",
+"a few opportunity"
+],
+answer:"D"
+},
+
+{
+id:52,
+question:"",
+choices:[
+"made progress",
+"made a progress",
+"making progress",
+"making a progress",
+"progress"
+],
+answer:"C"
+},
+
+{
+id:53,
+question:"",
+choices:[
+"make up with",
+"make up for",
+"make up for a",
+"make up",
+"make up a"
+],
+answer:"E"
+},
+
+{
+id:54,
+question:"",
+choices:[
+"in spite of",
+"such as",
+"as a result",
+"apart from",
+"except for"
+],
+answer:"E"
+},
+
+{
+id:55,
+question:"",
+choices:[
+"leaving",
+"to leave",
+"leave",
+"left",
+"to have left"
+],
+answer:"A"
+},
+
+{
+id:56,
+passage:`Items 56 - 60
+Choose the best answer.
+(A) People need to understand that when we talk about freedom of speech,
+we're actually talking about (at Ieast) two things: freedom of opinion or
+belief, and freedom of expression. (B) Freedom of opinion gives us the
+right to hold a belief without interference, exception, or restriction. (C) We
+have the right to believe anything we want. (D) Freedom of expression,
+___________ (58) _________, is more complicated. (E) We have the right to
+say what we want --- to give our opinions, advertise, display art and
+protest --- but within limits. (F) Most people are aware of these limits: we
+aren't allowed to say fighting words, slander another person's name, cause
+a panic, or incite violence, for example. (G) Free speech is not hate speech
+without consequence. (H) Simplistically, limits on what we say, where we
+say it and how we act are, therefore, like limits on the road, designed to
+optimize both our rights and public harmony.
+
+56. Which sentence should be inserted in (A) as the topic sentence for this paragraph?`,
+choices:[
+"Your right to be heard is not a right to be taken seriously.",
+"The conversation with children needs to be about whether limitations are fair and reasonable.",
+"Free speech doesn't mean you can say whatever you want, wherever.",
+"A private entity with its own rules and regulations has blocked a person from expressing their opinions.",
+"Free speech is done in a privately owned sphere available to the public."
+],
+answer:"C"
+},
+
+{
+id:57,
+question:"What is the relationship between Sentence (B) and Sentenced (C)?",
+choices:[
+"Sentence (C) gives a specific example of the content in Sentence (B).",
+"Sentence (C) summarizes Sentence (B).",
+"Sentence (C) contradicts Sentence (B).",
+"Sentence (C) alters the meaning of Sentence (B).",
+"Sentence (C) contrasts with Sentence (B)."
+],
+answer:"B"
+},
+
+{
+id:58,
+question:"Which word is NOT an appropriate word to complete the blank in Sentence (D)?",
+choices:[
+"on the other hand",
+"in contrast",
+"however",
+"though",
+"consequently"
+],
+answer:"E"
+},
+
+{
+id:59,
+question:"Which of the following statements can be inferred from Sentence (G)?",
+choices:[
+"Free speech is one of our most important rights.",
+"Defamation laws that stop legitimate criticism of a government or public official, violate the right to free speech.",
+"People are responsible for the action they freely choose to do.",
+"People always express ideas that are deeply offensive.",
+"Your right to be heard is not a right to be taken seriously."
+],
+answer:"C"
+},
+
+{
+id:60,
+question:"Which sentence DOES NOT belong in this paragraph?",
+choices:[
+"D",
+"E",
+"F",
+"G",
+"H"
+],
+answer:"C"
+},
+];
+
+
+function loadQuiz(){
+let start=1;
+let end=60;
+
+let html="";
+
+for(let i=start;i<=end;i++){
+
+let q = questions.find(x => x.id === i);
+
+if(!q) continue;
+
+html += `
+<div style="padding:10px;border-bottom:1px solid #eee">
+
+<b>Question ${q.id}</b><br><br>
+
+<pre style="
+white-space:pre-wrap;
+font-family:inherit;
+background:#f8f8f8;
+padding:10px;
+border-radius:10px;
+">
+${q.passage || q.question}
+</pre><br>
+
+<label>
+<input type="radio" name="q${q.id}" value="A">
+${q.choices[0]}
+</label>
+<br>
+
+<label>
+<input type="radio" name="q${q.id}" value="B">
+${q.choices[1]}
+</label><br>
+
+<label>
+<input type="radio" name="q${q.id}" value="C">
+${q.choices[2]}
+</label><br>
+
+<label>
+<input type="radio" name="q${q.id}" value="D">
+${q.choices[3]}
+</label>
+
+</label>
+
+<div id="review${q.id}" style="
+margin-top:10px;
+padding:8px;
+background:#fff5f9;
+border-radius:8px;
+display:none;
+"></div>
+
+</div>
+`;
+}
+
+html+=`<button onclick="grade()">Submit</button>`;
+
+document.getElementById("quiz").innerHTML=html;
+}
+
+function grade(){
+
+let score=0;
+
+
+for(let i=start;i<=end;i++){
+
+let selected=document.querySelector(`input[name=q${i}]:checked`);
+let user=selected ? selected.value : "-";
+
+let q = questions.find(x => x.id === i);
+
+if(user===q.answer) score++;
+
+document.getElementById(`review${i}`).style.display = "block";
+
+document.getElementById(`review${i}`).innerHTML = `
+${user===q.answer ? "✅ ถูกต้อง" : "❌ ไม่ถูกต้อง"}
+<br>
+Your Answer: ${user}
+<br>
+Correct Answer: ${q.answer}
+`;
+}
+
+let total = end - start + 1;
+
+document.getElementById("result").innerHTML =
+`<h2>🎉 คะแนน ${score}/${total}</h2>`;
+
+// บันทึกคะแนน
+saveHistory(score,total);
+
+// โหลดประวัติใหม่
+showHistory();
+}
+
+function saveHistory(score,total){
+
+let history =
+JSON.parse(localStorage.getItem("tgatHistory")) || [];
+
+history.unshift({
+date:new Date().toLocaleString("th-TH"),
+score:score,
+total:total
+});
+
+localStorage.setItem(
+"tgatHistory",
+JSON.stringify(history)
+);
+
+}
+
+function showHistory(){
+
+let history =
+JSON.parse(localStorage.getItem("tgatHistory")) || [];
+
+let html = "";
+
+history.forEach((item,index)=>{
+
+html += `
+<div style="
+padding:10px;
+margin:8px 0;
+background:#fff5f9;
+border-radius:10px;
+">
+
+<b>ครั้งที่ ${history.length-index}</b>
+
+<br>
+
+📅 ${item.date}
+
+<br>
+
+🎯 ${item.score}/${item.total}
+
+</div>
+`;
+
+});
+
+document.getElementById("history").innerHTML = html;
+
+}
+
+function clearHistory(){
+
+if(confirm("ลบประวัติทั้งหมด?")){
+
+localStorage.removeItem("tgatHistory");
+
+showHistory();
+
+}
+showHistory();
+}
+
+loadQuiz();
+showHistory();
+</script>
+
+</body>
+</html>
